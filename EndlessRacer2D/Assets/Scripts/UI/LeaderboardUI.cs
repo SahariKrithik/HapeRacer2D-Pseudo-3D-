@@ -8,13 +8,25 @@ public class LeaderboardUI : MonoBehaviour
     public TMP_Text leaderboardText;
     public Button viewLeaderboardButton;
 
-    private void Start()
+    void Start()
     {
         leaderboardPanel.SetActive(false);
 
-        // 🟩 Safely ensure the button is always hooked
-        viewLeaderboardButton.onClick.RemoveAllListeners();
-        viewLeaderboardButton.onClick.AddListener(ShowLeaderboard);
+        if (viewLeaderboardButton != null)
+        {
+            Debug.Log("Binding Leaderboard Button OnClick");
+
+            viewLeaderboardButton.onClick.RemoveAllListeners();
+            viewLeaderboardButton.onClick.AddListener(() =>
+            {
+                Debug.Log("Leaderboard Button Clicked (from runtime binding)");
+                ShowLeaderboard();
+            });
+        }
+        else
+        {
+            Debug.LogError("❌ viewLeaderboardButton is null");
+        }
     }
 
     public void ShowLeaderboard()
