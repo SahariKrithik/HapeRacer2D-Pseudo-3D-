@@ -2,19 +2,30 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float moveSpeed = 10f; // Adjustable in Inspector
+
     private int currentLane = 1; // middle lane
+    private float targetX; // X to move toward
+
 
     void Start()
     {
-        // Optional: snap to initial position
-        UpdatePosition();
+        targetX = LaneManager.Instance.GetLaneX(currentLane);
+        UpdatePosition(true); // Snap at start
     }
+
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow)) MoveLeft();
         if (Input.GetKeyDown(KeyCode.RightArrow)) MoveRight();
+
+        // Smooth horizontal movement
+        Vector3 pos = transform.position;
+        pos.x = Mathf.MoveTowards(pos.x, targetX, moveSpeed * Time.deltaTime);
+        transform.position = pos;
     }
+
 
     public void MoveLeft()
     {
@@ -34,11 +45,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void UpdatePosition()
+    private void UpdatePosition(bool instant = false)
     {
-        float x = LaneManager.Instance.GetLaneX(currentLane);
-        Vector3 pos = transform.position;
-        pos.x = x;
-        transform.position = pos;
+        targetX = LaneManager.Instance.GetLaneX(currentLane);
+
+        if (instant)
+        {
+            Vector3 pos = transform.position;
+            pos.x = targetX;
+            transform.position = pos;
+        }
     }
+
 }
