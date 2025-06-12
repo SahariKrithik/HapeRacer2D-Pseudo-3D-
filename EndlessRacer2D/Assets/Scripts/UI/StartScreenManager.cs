@@ -6,7 +6,16 @@ public class StartScreenManager : MonoBehaviour
 {
     public TMP_InputField nameInput;
     public TMP_Text walletDisplayText;
+    public TMP_Text leaderboardText;
 
+    void Start()
+    {
+        // Rebind the leaderboardText reference
+        if (BackendManager.Instance != null)
+        {
+            BackendManager.Instance.leaderboardText = leaderboardText;
+        }
+    }
     public void StartGame()
     {
         string playerName = nameInput.text.Trim();
