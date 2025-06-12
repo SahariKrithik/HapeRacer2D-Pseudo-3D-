@@ -18,6 +18,10 @@ public class LeaderboardUI : MonoBehaviour
         leaderboardPanel.SetActive(true);
         viewLeaderboardButton.gameObject.SetActive(false);
 
+        Debug.Log("Leaderboard Button Clicked");
+        Debug.Log($"BackendManager.Instance: {BackendManager.Instance != null}");
+        Debug.Log($"leaderboardText assigned: {leaderboardText != null}");
+
 
         // Force update leaderboardText reference each time
         if (BackendManager.Instance != null)
