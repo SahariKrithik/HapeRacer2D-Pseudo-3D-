@@ -11,7 +11,7 @@ public class BackendManager : MonoBehaviour
     public TMP_Text leaderboardText;
 
     [Header("Server Settings")]
-    public string serverURL = "http://localhost:5000"; // change to hosted URL in production
+    public string serverURL = "https://endless-racer2-d-web-gl.vercel.app/"; // change to hosted URL in production
 
     private void Awake()
     {
