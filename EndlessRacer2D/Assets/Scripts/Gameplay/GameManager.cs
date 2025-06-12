@@ -21,6 +21,13 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    void Start()
+    {
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0; // Prevent VSync bottleneck
+    }
+
+
     public void GameOver()
     {
         if (isGameOver) return;
@@ -55,7 +62,6 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("HighScore");
         PlayerPrefs.Save();
-        Debug.Log("High Score reset to 0");
 
         if (finalScoreText != null)
             finalScoreText.text = "Score: 0";

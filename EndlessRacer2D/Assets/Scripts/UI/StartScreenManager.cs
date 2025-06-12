@@ -27,4 +27,9 @@ public class StartScreenManager : MonoBehaviour
         SceneManager.LoadScene("MainGame");
     }
 
+    public void ReceiveInputFromOverlay(string value)
+    {
+        nameInput.text = value;
+    }
+
 }
