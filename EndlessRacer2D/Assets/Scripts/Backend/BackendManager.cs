@@ -23,6 +23,7 @@ public class BackendManager : MonoBehaviour
         }
 
         Instance = this;
+        serverURL = "https://endlessracer2d.onrender.com";
         DontDestroyOnLoad(gameObject);
     }
 

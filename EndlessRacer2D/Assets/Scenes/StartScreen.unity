@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leaderboardText: {fileID: 88753681}
-  serverURL: 'https://endlessracer2d.onrender.com '
+  serverURL: https://endlessracer2d.onrender.com
 --- !u!114 &300419657
 MonoBehaviour:
   m_ObjectHideFlags: 0
