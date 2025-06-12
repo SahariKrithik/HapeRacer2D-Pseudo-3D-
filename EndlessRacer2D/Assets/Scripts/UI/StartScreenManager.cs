@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
@@ -11,13 +11,21 @@ public class StartScreenManager : MonoBehaviour
     public TMP_Text leaderboardText;
     public Button leaderboardButton;
     public LeaderboardUI leaderboardUI;
+    public Button closeLeaderboardButton;
 
     void Start()
     {
-        // Rebind leaderboard components to BackendManager
+        // Rebind leaderboard display to backend
         if (BackendManager.Instance != null)
         {
             BackendManager.Instance.RebindLeaderboard(leaderboardButton, leaderboardUI, leaderboardText);
+        }
+
+        // 🔁 Reassign close leaderboard button listener to avoid losing reference
+        if (closeLeaderboardButton != null && leaderboardUI != null)
+        {
+            closeLeaderboardButton.onClick.RemoveAllListeners();
+            closeLeaderboardButton.onClick.AddListener(leaderboardUI.HideLeaderboard);
         }
     }
 
