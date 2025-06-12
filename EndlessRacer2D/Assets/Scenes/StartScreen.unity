@@ -649,8 +649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96d2cd83a0e9fa42a32bd5d2a75457c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaderboardText: {fileID: 0}
-  serverURL: http://localhost:5000
+  leaderboardText: {fileID: 88753681}
+  serverURL: 'https://endlessracer2d.onrender.com '
 --- !u!114 &300419657
 MonoBehaviour:
   m_ObjectHideFlags: 0
