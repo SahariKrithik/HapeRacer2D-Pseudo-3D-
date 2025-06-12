@@ -655,6 +655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leaderboardText: {fileID: 88753681}
   viewLeaderboardButton: {fileID: 2034846417}
+  closeLeaderboardButton: {fileID: 2091648680}
   leaderboardUI: {fileID: 300419657}
   serverURL: https://endlessracer2d.onrender.com
 --- !u!114 &300419657
