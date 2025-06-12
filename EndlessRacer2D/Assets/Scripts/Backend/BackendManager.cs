@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 using System.Collections;
 using TMPro;
 
@@ -9,13 +10,14 @@ public class BackendManager : MonoBehaviour
 
     [Header("UI References")]
     public TMP_Text leaderboardText;
+    public Button viewLeaderboardButton;
+    public LeaderboardUI leaderboardUI;
 
     [Header("Server Settings")]
-    public string serverURL = "https://endlessracer2d.onrender.com/"; // change to hosted URL in production
+    public string serverURL = "https://endlessracer2d.onrender.com/";
 
     private void Awake()
     {
-        // Singleton setup: Only one instance survives across scenes
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -27,13 +29,48 @@ public class BackendManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // 🟥 Submit the current score to backend
+    private void OnEnable()
+    {
+        TryRebindLeaderboardButton();
+    }
+
+    private void Start()
+    {
+        TryRebindLeaderboardButton();
+    }
+
+    private void TryRebindLeaderboardButton()
+    {
+        if (viewLeaderboardButton != null && leaderboardUI != null)
+        {
+            viewLeaderboardButton.onClick.RemoveAllListeners();
+            viewLeaderboardButton.onClick.AddListener(() =>
+            {
+                Debug.Log("Leaderboard Button Clicked (rebinding)");
+                leaderboardText = leaderboardUI.leaderboardText;
+                leaderboardUI.ShowLeaderboard();
+            });
+        }
+        else
+        {
+            Debug.Log("Waiting for UI references to assign...");
+        }
+    }
+
+    // Call this from StartScreen on scene load
+    public void RebindLeaderboard(Button button, LeaderboardUI ui, TMP_Text text)
+    {
+        viewLeaderboardButton = button;
+        leaderboardUI = ui;
+        leaderboardText = text;
+        TryRebindLeaderboardButton();
+    }
+
     public void SubmitScore(string name, string wallet, int score)
     {
         StartCoroutine(SubmitScoreRoutine(name, wallet, score));
     }
 
-    // 🟦 Fetch leaderboard from backend
     public void FetchLeaderboard()
     {
         StartCoroutine(GetLeaderboardRoutine());
@@ -78,7 +115,6 @@ public class BackendManager : MonoBehaviour
     string FormatLeaderboard(string json)
     {
         json = "{\"scores\":" + json + "}"; // Wrap array for JsonUtility
-
         ScoreListWrapper wrapper = JsonUtility.FromJson<ScoreListWrapper>(json);
         string result = "Leaderboard:\n";
 
