@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
@@ -10,28 +10,30 @@ public class LeaderboardUI : MonoBehaviour
 
     private void Start()
     {
-        leaderboardPanel.SetActive(false); // Hide initially
+        leaderboardPanel.SetActive(false);
+
+        // 🟩 Safely ensure the button is always hooked
+        viewLeaderboardButton.onClick.RemoveAllListeners();
+        viewLeaderboardButton.onClick.AddListener(ShowLeaderboard);
     }
 
     public void ShowLeaderboard()
     {
+        Debug.Log("Leaderboard Button Clicked");
+
         leaderboardPanel.SetActive(true);
         viewLeaderboardButton.gameObject.SetActive(false);
 
-        Debug.Log("Leaderboard Button Clicked");
-        Debug.Log($"BackendManager.Instance: {BackendManager.Instance != null}");
-        Debug.Log($"leaderboardText assigned: {leaderboardText != null}");
-
-
-        // Force update leaderboardText reference each time
         if (BackendManager.Instance != null)
         {
             BackendManager.Instance.leaderboardText = leaderboardText;
+            Debug.Log("BackendManager.Instance: True");
+            Debug.Log("leaderboardText assigned: " + (leaderboardText != null));
             BackendManager.Instance.FetchLeaderboard();
         }
         else
         {
-            Debug.LogError("BackendManager.Instance is null");
+            Debug.LogError("❌BackendManager.Instance is null");
         }
     }
 
