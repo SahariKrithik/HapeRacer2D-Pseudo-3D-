@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
@@ -47,10 +47,22 @@ public class GameManager : MonoBehaviour
             newHighScoreText.SetActive(true);
         }
 
+        // 🟩 Submit score to backend
+        string playerName = PlayerPrefs.GetString("PlayerName", "Guest");
+        string wallet = PlayerPrefs.GetString("WalletAddress", "0xNoWallet");
+        BackendManager.Instance.SubmitScore(playerName, wallet, finalScore);
+
         // Update UI
         finalScoreText.text = "Score: " + finalScore;
         gameOverPanel.SetActive(true);
     }
+
+    public void ReturnToMainMenu()
+    {
+        Time.timeScale = 1; // Resume time in case it's paused
+        SceneManager.LoadScene("StartScreen"); // Replace with your actual start scene name
+    }
+
 
     public void RestartGame()
     {
