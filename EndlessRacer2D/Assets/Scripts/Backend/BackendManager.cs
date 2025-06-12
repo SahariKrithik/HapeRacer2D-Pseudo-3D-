@@ -11,6 +11,7 @@ public class BackendManager : MonoBehaviour
     [Header("UI References")]
     public TMP_Text leaderboardText;
     public Button viewLeaderboardButton;
+    public Button closeLeaderboardButton;
     public LeaderboardUI leaderboardUI;
 
     [Header("Server Settings")]
@@ -31,15 +32,15 @@ public class BackendManager : MonoBehaviour
 
     private void OnEnable()
     {
-        TryRebindLeaderboardButton();
+        TryRebindLeaderboardButtons();
     }
 
     private void Start()
     {
-        TryRebindLeaderboardButton();
+        TryRebindLeaderboardButtons();
     }
 
-    private void TryRebindLeaderboardButton()
+    private void TryRebindLeaderboardButtons()
     {
         if (viewLeaderboardButton != null && leaderboardUI != null)
         {
@@ -51,19 +52,25 @@ public class BackendManager : MonoBehaviour
                 leaderboardUI.ShowLeaderboard();
             });
         }
-        else
+
+        if (closeLeaderboardButton != null && leaderboardUI != null)
         {
-            Debug.Log("Waiting for UI references to assign...");
+            closeLeaderboardButton.onClick.RemoveAllListeners();
+            closeLeaderboardButton.onClick.AddListener(() =>
+            {
+                Debug.Log("Close Leaderboard Button Clicked (rebinding)");
+                leaderboardUI.HideLeaderboard();
+            });
         }
     }
 
-    // Call this from StartScreen on scene load
-    public void RebindLeaderboard(Button button, LeaderboardUI ui, TMP_Text text)
+    public void RebindLeaderboard(Button openButton, LeaderboardUI ui, TMP_Text text, Button closeButton)
     {
-        viewLeaderboardButton = button;
+        viewLeaderboardButton = openButton;
         leaderboardUI = ui;
         leaderboardText = text;
-        TryRebindLeaderboardButton();
+        closeLeaderboardButton = closeButton;
+        TryRebindLeaderboardButtons();
     }
 
     public void SubmitScore(string name, string wallet, int score)
@@ -114,7 +121,7 @@ public class BackendManager : MonoBehaviour
 
     string FormatLeaderboard(string json)
     {
-        json = "{\"scores\":" + json + "}"; // Wrap array for JsonUtility
+        json = "{\"scores\":" + json + "}";
         ScoreListWrapper wrapper = JsonUtility.FromJson<ScoreListWrapper>(json);
         string result = "Leaderboard:\n";
 

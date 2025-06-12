@@ -14,8 +14,6 @@ public class LeaderboardUI : MonoBehaviour
 
         if (viewLeaderboardButton != null)
         {
-            Debug.Log("Binding Leaderboard Button OnClick");
-
             viewLeaderboardButton.onClick.RemoveAllListeners();
             viewLeaderboardButton.onClick.AddListener(() =>
             {
@@ -23,29 +21,21 @@ public class LeaderboardUI : MonoBehaviour
                 ShowLeaderboard();
             });
         }
-        else
-        {
-            Debug.LogError("❌ viewLeaderboardButton is null");
-        }
     }
 
     public void ShowLeaderboard()
     {
-        Debug.Log("Leaderboard Button Clicked");
-
         leaderboardPanel.SetActive(true);
         viewLeaderboardButton.gameObject.SetActive(false);
 
         if (BackendManager.Instance != null)
         {
             BackendManager.Instance.leaderboardText = leaderboardText;
-            Debug.Log("BackendManager.Instance: True");
-            Debug.Log("leaderboardText assigned: " + (leaderboardText != null));
             BackendManager.Instance.FetchLeaderboard();
         }
         else
         {
-            Debug.LogError("❌BackendManager.Instance is null");
+            Debug.LogError("❌ BackendManager.Instance is null");
         }
     }
 

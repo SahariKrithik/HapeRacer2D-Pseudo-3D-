@@ -15,17 +15,14 @@ public class StartScreenManager : MonoBehaviour
 
     void Start()
     {
-        // Rebind leaderboard display to backend
         if (BackendManager.Instance != null)
         {
-            BackendManager.Instance.RebindLeaderboard(leaderboardButton, leaderboardUI, leaderboardText);
-        }
-
-        // 🔁 Reassign close leaderboard button listener to avoid losing reference
-        if (closeLeaderboardButton != null && leaderboardUI != null)
-        {
-            closeLeaderboardButton.onClick.RemoveAllListeners();
-            closeLeaderboardButton.onClick.AddListener(leaderboardUI.HideLeaderboard);
+            BackendManager.Instance.RebindLeaderboard(
+                leaderboardButton,
+                leaderboardUI,
+                leaderboardText,
+                closeLeaderboardButton
+            );
         }
     }
 
