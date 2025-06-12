@@ -10,15 +10,25 @@ public class LeaderboardUI : MonoBehaviour
 
     private void Start()
     {
-        leaderboardPanel.SetActive(false); // Hide by default
+        leaderboardPanel.SetActive(false); // Hide initially
     }
 
     public void ShowLeaderboard()
     {
         leaderboardPanel.SetActive(true);
-        viewLeaderboardButton.gameObject.SetActive(false); //  Hide the button
-        BackendManager.Instance.leaderboardText = leaderboardText;
-        BackendManager.Instance.FetchLeaderboard();
+        viewLeaderboardButton.gameObject.SetActive(false);
+
+
+        // Force update leaderboardText reference each time
+        if (BackendManager.Instance != null)
+        {
+            BackendManager.Instance.leaderboardText = leaderboardText;
+            BackendManager.Instance.FetchLeaderboard();
+        }
+        else
+        {
+            Debug.LogError("BackendManager.Instance is null");
+        }
     }
 
     public void HideLeaderboard()
