@@ -29,8 +29,8 @@ public class Spawner : MonoBehaviour
         GameObject obj = spawnCoin ? coinPool.GetObject() : obstaclePool.GetObject();
 
         obj.transform.position = spawnPos;
-        obj.transform.localScale = Vector3.one * 0.2f; // start small again for scaling effect
 
+        // Do NOT reset scale here — it's now handled in OnEnable of MovingObject
         obj.SetActive(true);
     }
 }

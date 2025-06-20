@@ -98,9 +98,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e522e815d12a494b82bcdd4db7b7dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  scaleSpeed: 0.5
-  hazardSprites: []
+  moveSpeed: 3
+  scaleSpeed: 0.175
+  hazardConfigs:
+  - sprite: {fileID: 21300000, guid: 0f575cd0fd44e764a973337da08dc27a, type: 3}
+    initialScale: 0.2
+    maxScale: 1
+  - sprite: {fileID: 21300000, guid: 20de1b8d12b47a3499a47d31fc175690, type: 3}
+    initialScale: 0.2
+    maxScale: 1
+  - sprite: {fileID: 21300000, guid: 973416b609e31b646a69b98b614903e5, type: 3}
+    initialScale: 0.2
+    maxScale: 1
+  coinConfigs: []
 --- !u!60 &9208256758307170632
 PolygonCollider2D:
   m_ObjectHideFlags: 0
