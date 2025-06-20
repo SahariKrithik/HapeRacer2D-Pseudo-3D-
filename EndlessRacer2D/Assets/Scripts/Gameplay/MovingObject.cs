@@ -5,24 +5,43 @@ public class MovingObject : MonoBehaviour
     public float moveSpeed = 3f;
     public float scaleSpeed = 0.5f;
 
+    [Header("Optional")]
+    public Sprite[] hazardSprites; // assign in prefab
+    private SpriteRenderer spriteRenderer;
+
     private float destroyY = -6f;
+
+    void OnEnable()
+    {
+        // Reset scale in case object is reused
+        transform.localScale = Vector3.one * 0.1f;
+
+        // Randomize sprite if it's a hazard
+        if (CompareTag("Obstacle") && hazardSprites != null && hazardSprites.Length > 0)
+        {
+            if (spriteRenderer == null)
+                spriteRenderer = GetComponent<SpriteRenderer>();
+
+            spriteRenderer.sprite = hazardSprites[Random.Range(0, hazardSprites.Length)];
+        }
+    }
 
     void Update()
     {
         // Move downward
         transform.position += Vector3.down * moveSpeed * Time.deltaTime;
 
-        // Gradually scale up
+        // Scale up to simulate depth
         transform.localScale += Vector3.one * scaleSpeed * Time.deltaTime;
 
         // Off-screen? Return to pool
         if (transform.position.y < destroyY)
         {
-            ObjectPool pool = GetComponentInParent<ObjectPool>(); // safest for later
+            ObjectPool pool = GetComponentInParent<ObjectPool>();
             if (pool != null)
                 pool.ReturnToPool(gameObject);
             else
-                gameObject.SetActive(false); // fallback
+                gameObject.SetActive(false);
         }
     }
 
@@ -30,20 +49,17 @@ public class MovingObject : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (gameObject.CompareTag("Coin"))
+            if (CompareTag("Coin"))
             {
-                ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+                var scoreManager = FindObjectOfType<ScoreManager>();
                 scoreManager.AddPoints(50);
             }
-            else if (gameObject.CompareTag("Obstacle"))
+            else if (CompareTag("Obstacle"))
             {
-                // Trigger game over
                 GameManager.Instance.GameOver();
             }
 
-            gameObject.SetActive(false); // Return to pool
+            gameObject.SetActive(false);
         }
     }
-
-
 }

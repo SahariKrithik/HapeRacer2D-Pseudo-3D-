@@ -22,15 +22,15 @@ public class Spawner : MonoBehaviour
     void Spawn()
     {
         float x = LaneManager.Instance.GetRandomLaneX();
-
         float topY = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1f, 0)).y + 1f;
         Vector3 spawnPos = new Vector3(x, topY, 0);
 
         bool spawnCoin = Random.value < 0.4f;
-
         GameObject obj = spawnCoin ? coinPool.GetObject() : obstaclePool.GetObject();
+
         obj.transform.position = spawnPos;
-        obj.transform.localScale = Vector3.one * 0.2f; // Small scale at spawn
+        obj.transform.localScale = Vector3.one * 0.2f; // start small again for scaling effect
+
         obj.SetActive(true);
     }
 }
