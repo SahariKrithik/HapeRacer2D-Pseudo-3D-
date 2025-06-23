@@ -9,16 +9,16 @@ public class RoadScroller : MonoBehaviour
 
     void Start()
     {
-        if (roadTiles.Length > 0)
-            tileHeight = roadTiles[0].GetComponent<SpriteRenderer>().bounds.size.y;
+        tileHeight = roadTiles[0].GetComponentInChildren<SpriteRenderer>().bounds.size.y;
     }
 
     void Update()
     {
-        foreach (var tile in roadTiles)
+        foreach (Transform tile in roadTiles)
         {
             tile.Translate(Vector3.down * scrollSpeed * Time.deltaTime);
 
+            // When tile goes off-screen (below), reposition above
             if (tile.position.y < -tileHeight)
             {
                 float highestY = GetHighestY();
@@ -27,10 +27,11 @@ public class RoadScroller : MonoBehaviour
         }
     }
 
+
     float GetHighestY()
     {
         float maxY = float.MinValue;
-        foreach (var tile in roadTiles)
+        foreach (Transform tile in roadTiles)
         {
             if (tile.position.y > maxY)
                 maxY = tile.position.y;

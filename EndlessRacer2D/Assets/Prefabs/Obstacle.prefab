@@ -102,11 +102,11 @@ MonoBehaviour:
   scaleSpeed: 0.175
   hazardConfigs:
   - sprite: {fileID: 21300000, guid: 0f575cd0fd44e764a973337da08dc27a, type: 3}
-    initialScale: 0.2
-    maxScale: 1
+    initialScale: 0.1
+    maxScale: 0.7
   - sprite: {fileID: 21300000, guid: 20de1b8d12b47a3499a47d31fc175690, type: 3}
-    initialScale: 0.2
-    maxScale: 1
+    initialScale: 0.1
+    maxScale: 0.7
   - sprite: {fileID: 21300000, guid: 973416b609e31b646a69b98b614903e5, type: 3}
     initialScale: 0.2
     maxScale: 1
