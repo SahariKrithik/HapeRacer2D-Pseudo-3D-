@@ -867,7 +867,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f923732388464c447b388ef580b15021, type: 2}
   coinConfigs:
   - {fileID: 11400000, guid: 6364a407100920f4394e4f7f47d66c4c, type: 2}
-  spawnInterval: 0.75
+  spawnInterval: 1.5
+  spawnYOffset: -2.25
 --- !u!4 &390206843
 Transform:
   m_ObjectHideFlags: 0
@@ -2180,27 +2181,27 @@ MonoBehaviour:
   pools:
   - id: Bush1
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: Bush2
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: Bush3
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: HAPEbillboard1
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: HAPEbillboard2
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
@@ -2210,67 +2211,67 @@ MonoBehaviour:
     parent: {fileID: 0}
   - id: HAPEbillboard3
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: Tree1
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: Tree2
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: Tree3
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: TreeAndBush1
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: TreeAndBush2
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: TreeMonkeyBush1
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: Banana
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: Barricade1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: Barricade2
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
+    poolSize: 3
     warmUp: 1
-    expandable: 0
+    expandable: 1
     parent: {fileID: 0}
   - id: Bike2
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 5
+    poolSize: 3
     warmUp: 1
     expandable: 1
     parent: {fileID: 0}
