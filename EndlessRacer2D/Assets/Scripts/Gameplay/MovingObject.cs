@@ -12,8 +12,10 @@ public class MovingObject : MonoBehaviour
 
     private float startX = 0f;
     private float targetX;
-
     private bool isScenery = false;
+
+    private string poolId;
+    private ObjectPoolGroup poolGroup;
 
     void OnEnable()
     {
@@ -54,7 +56,6 @@ public class MovingObject : MonoBehaviour
         startX = 0f;
         targetX = transform.position.x;
 
-        // Apply lane shift only to obstacles/coins, not scenery
         if (!isScenery)
             transform.position = new Vector3(startX, transform.position.y, transform.position.z);
     }
@@ -80,9 +81,8 @@ public class MovingObject : MonoBehaviour
 
         if (transform.position.y < destroyY)
         {
-            ObjectPool pool = GetComponentInParent<ObjectPool>();
-            if (pool != null)
-                pool.ReturnToPool(gameObject);
+            if (poolGroup != null && !string.IsNullOrEmpty(poolId))
+                poolGroup.Return(poolId, gameObject);
             else
                 gameObject.SetActive(false);
         }
@@ -93,11 +93,14 @@ public class MovingObject : MonoBehaviour
         if (!other.CompareTag("Player")) return;
 
         if (CompareTag("Coin"))
-            FindObjectOfType<ScoreManager>().AddPoints(50);
+            FindObjectOfType<ScoreManager>()?.AddPoints(50);
         else if (CompareTag("Obstacle"))
             GameManager.Instance.GameOver();
 
-        gameObject.SetActive(false);
+        if (poolGroup != null && !string.IsNullOrEmpty(poolId))
+            poolGroup.Return(poolId, gameObject);
+        else
+            gameObject.SetActive(false);
     }
 
     public void SetCustomSpeed(float move, float scale, float initial, float max)
@@ -107,5 +110,11 @@ public class MovingObject : MonoBehaviour
         currentScale = initial;
         maxScale = max;
         transform.localScale = Vector3.one * initial;
+    }
+
+    public void InitPooling(ObjectPoolGroup group, string id)
+    {
+        poolGroup = group;
+        poolId = id;
     }
 }

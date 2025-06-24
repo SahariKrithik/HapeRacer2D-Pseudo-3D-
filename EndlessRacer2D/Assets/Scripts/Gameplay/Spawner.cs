@@ -1,10 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour
 {
-    public ObjectPool obstaclePool;
-    public ObjectPool coinPool;
+    public ObjectPoolGroup poolGroup; // ✅ Use only ObjectPoolGroup
 
     public float spawnInterval = 1.5f;
     private float timer;
@@ -26,11 +25,8 @@ public class Spawner : MonoBehaviour
     {
         float topY = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1f, 0)).y + 1f;
 
-        // Track used lanes to avoid overlap
         List<int> usedLanes = new List<int>();
-
-        // Spawn up to 2 obstacles in random lanes
-        int obstacleCount = Random.Range(1, 3); // 1 or 2 obstacles
+        int obstacleCount = Random.Range(1, 3);
         List<int> shuffledLanes = new List<int>(laneIndices);
         Shuffle(shuffledLanes);
 
@@ -40,43 +36,46 @@ public class Spawner : MonoBehaviour
             float x = LaneManager.Instance.GetLaneX(lane);
             Vector3 spawnPos = new Vector3(x, topY, 0);
 
-            GameObject obj = obstaclePool.GetObject();
-            obj.transform.position = spawnPos;
-            obj.SetActive(true);
+            GameObject obj = poolGroup.Get("Obstacle");
+            if (obj == null) continue;
 
+            obj.transform.position = spawnPos;
+
+            var mover = obj.GetComponent<MovingObject>();
+            if (mover != null)
+                mover.InitPooling(poolGroup, "Obstacle");
+
+            obj.SetActive(true);
             usedLanes.Add(lane);
         }
 
-        // Try to spawn coin
         if (Random.value < 0.4f)
         {
             List<int> availableForCoin = new List<int>(laneIndices);
             foreach (int lane in usedLanes)
                 availableForCoin.Remove(lane);
 
-            int coinLane;
-            if (availableForCoin.Count > 0)
-            {
-                // Prefer an unused lane
-                coinLane = availableForCoin[Random.Range(0, availableForCoin.Count)];
-            }
-            else
-            {
-                // All lanes used by obstacles � allow overlap by choosing any lane
-                coinLane = laneIndices[Random.Range(0, laneIndices.Length)];
-            }
+            int coinLane = (availableForCoin.Count > 0)
+                ? availableForCoin[Random.Range(0, availableForCoin.Count)]
+                : laneIndices[Random.Range(0, laneIndices.Length)];
 
             float x = LaneManager.Instance.GetLaneX(coinLane);
             Vector3 spawnPos = new Vector3(x, topY, 0);
 
-            GameObject coin = coinPool.GetObject();
+            GameObject coin = poolGroup.Get("Coin");
+            if (coin == null) return;
+
             coin.transform.position = spawnPos;
+
+            var mover = coin.GetComponent<MovingObject>();
+            if (mover != null)
+                mover.InitPooling(poolGroup, "Coin");
+
             coin.SetActive(true);
         }
     }
 
-
-        void Shuffle(List<int> list)
+    void Shuffle(List<int> list)
     {
         for (int i = 0; i < list.Count; i++)
         {

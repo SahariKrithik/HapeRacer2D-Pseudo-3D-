@@ -756,53 +756,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298692732}
   m_CullTransparentMesh: 1
---- !u!1 &435538797
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 435538798}
-  - component: {fileID: 435538799}
-  m_Layer: 0
-  m_Name: CoinPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &435538798
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 435538797}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &435538799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 435538797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b507cd440b10d504384c48de47f1e5fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-  poolSize: 3
-  allowExpansion: 1
 --- !u!1 &519476982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,7 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf98fc319ba7dd74e9a587b6efca834d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolGroup: {fileID: 0}
+  poolGroup: {fileID: 1481720364}
   sceneryConfigs:
   - {fileID: 11400000, guid: 3fca101c0a761ba45a1f117357f8e93a, type: 2}
   - {fileID: 11400000, guid: 18bae8e35b56ff04194a554b64fda182, type: 2}
@@ -1853,8 +1806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049fa2a8cde415c4da9f3912a943f998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePool: {fileID: 2118756557}
-  coinPool: {fileID: 435538799}
+  poolGroup: {fileID: 1481720364}
   spawnInterval: 2
 --- !u!114 &1224359072
 MonoBehaviour:
@@ -1938,58 +1890,70 @@ MonoBehaviour:
     warmUp: 1
     expandable: 0
     parent: {fileID: 0}
-  - id: 
+  - id: HAPEbillboard1
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
     poolSize: 2
     warmUp: 1
     expandable: 0
     parent: {fileID: 0}
-  - id: 
-    prefab: {fileID: 0}
+  - id: HAPEbillboard2
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
     poolSize: 2
     warmUp: 1
     expandable: 0
     parent: {fileID: 0}
-  - id: 
-    prefab: {fileID: 0}
+  - id: HAPEbillboard3
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
     poolSize: 2
     warmUp: 1
     expandable: 0
     parent: {fileID: 0}
-  - id: 
-    prefab: {fileID: 0}
+  - id: Tree1
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
     poolSize: 0
-    warmUp: 0
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
-  - id: 
-    prefab: {fileID: 0}
+  - id: Tree2
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
     poolSize: 0
-    warmUp: 0
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
-  - id: 
-    prefab: {fileID: 0}
+  - id: Tree3
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
     poolSize: 0
-    warmUp: 0
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
-  - id: 
-    prefab: {fileID: 0}
-    poolSize: 0
-    warmUp: 0
+  - id: TreeAndBush1
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 2
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
-  - id: 
-    prefab: {fileID: 0}
-    poolSize: 0
-    warmUp: 0
+  - id: TreeAndBush2
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 2
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
-  - id: 
-    prefab: {fileID: 0}
-    poolSize: 0
-    warmUp: 0
+  - id: TreeMonkeyBush1
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 2
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Coin
+    prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
+    poolSize: 2
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Obstacle
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 2
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
 --- !u!1 &1532561345
@@ -2170,7 +2134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf98fc319ba7dd74e9a587b6efca834d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolGroup: {fileID: 0}
+  poolGroup: {fileID: 1481720364}
   sceneryConfigs:
   - {fileID: 11400000, guid: 3fca101c0a761ba45a1f117357f8e93a, type: 2}
   - {fileID: 11400000, guid: 18bae8e35b56ff04194a554b64fda182, type: 2}
@@ -2988,53 +2952,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac9444cf674f944ab4656f622f6d49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2118756554
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2118756555}
-  - component: {fileID: 2118756557}
-  m_Layer: 0
-  m_Name: ObstaclePool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2118756555
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118756554}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2118756557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118756554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b507cd440b10d504384c48de47f1e5fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-  poolSize: 2
-  allowExpansion: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3045,8 +2962,6 @@ SceneRoots:
   - {fileID: 23052337}
   - {fileID: 6102560}
   - {fileID: 1224359069}
-  - {fileID: 2118756555}
-  - {fileID: 435538798}
   - {fileID: 258833695}
   - {fileID: 1633303040}
   - {fileID: 1481720363}
