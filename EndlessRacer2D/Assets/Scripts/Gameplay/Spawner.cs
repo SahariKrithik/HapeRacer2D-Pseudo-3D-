@@ -3,12 +3,11 @@ using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour
 {
-    public ObjectPoolGroup poolGroup; // ✅ Use only ObjectPoolGroup
-
+    public ObjectPoolGroup poolGroup;
     public float spawnInterval = 1.5f;
-    private float timer;
 
-    private int[] laneIndices = { 0, 1, 2 }; // Matches LaneManager's 3 lanes
+    private float timer;
+    private readonly int[] laneIndices = { 0, 1, 2 };
 
     void Update()
     {
@@ -23,40 +22,41 @@ public class Spawner : MonoBehaviour
 
     void SpawnHazardsAndCoins()
     {
-        float topY = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1f, 0)).y + 1f;
+        if (Camera.main == null || LaneManager.Instance == null) return;
 
+        float topY = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1f, 0)).y + 1f;
         List<int> usedLanes = new List<int>();
-        int obstacleCount = Random.Range(1, 3);
         List<int> shuffledLanes = new List<int>(laneIndices);
         Shuffle(shuffledLanes);
 
+        // Spawn 1 or 2 obstacles
+        int obstacleCount = Random.Range(1, 3);
         for (int i = 0; i < obstacleCount && i < shuffledLanes.Count; i++)
         {
             int lane = shuffledLanes[i];
             float x = LaneManager.Instance.GetLaneX(lane);
             Vector3 spawnPos = new Vector3(x, topY, 0);
 
-            GameObject obj = poolGroup.Get("Obstacle");
-            if (obj == null) continue;
+            GameObject obstacle = poolGroup.Get("Obstacle");
+            if (obstacle == null) continue;
 
-            obj.transform.position = spawnPos;
+            obstacle.transform.position = spawnPos;
 
-            var mover = obj.GetComponent<MovingObject>();
-            if (mover != null)
-                mover.InitPooling(poolGroup, "Obstacle");
+            var mover = obstacle.GetComponent<MovingObject>();
+            mover?.InitPooling(poolGroup, "Obstacle");
 
-            obj.SetActive(true);
             usedLanes.Add(lane);
         }
 
+        // 40% chance to spawn a coin
         if (Random.value < 0.4f)
         {
-            List<int> availableForCoin = new List<int>(laneIndices);
+            List<int> coinLanes = new List<int>(laneIndices);
             foreach (int lane in usedLanes)
-                availableForCoin.Remove(lane);
+                coinLanes.Remove(lane);
 
-            int coinLane = (availableForCoin.Count > 0)
-                ? availableForCoin[Random.Range(0, availableForCoin.Count)]
+            int coinLane = (coinLanes.Count > 0)
+                ? coinLanes[Random.Range(0, coinLanes.Count)]
                 : laneIndices[Random.Range(0, laneIndices.Length)];
 
             float x = LaneManager.Instance.GetLaneX(coinLane);
@@ -68,10 +68,7 @@ public class Spawner : MonoBehaviour
             coin.transform.position = spawnPos;
 
             var mover = coin.GetComponent<MovingObject>();
-            if (mover != null)
-                mover.InitPooling(poolGroup, "Coin");
-
-            coin.SetActive(true);
+            mover?.InitPooling(poolGroup, "Coin");
         }
     }
 
@@ -79,10 +76,8 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < list.Count; i++)
         {
-            int temp = list[i];
             int randIndex = Random.Range(i, list.Count);
-            list[i] = list[randIndex];
-            list[randIndex] = temp;
+            (list[i], list[randIndex]) = (list[randIndex], list[i]);
         }
     }
 }

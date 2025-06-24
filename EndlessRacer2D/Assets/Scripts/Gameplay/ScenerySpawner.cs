@@ -2,10 +2,13 @@
 
 public class ScenerySpawner : MonoBehaviour
 {
-    public ObjectPoolGroup poolGroup;                  // 🟢 Use ObjectPoolGroup
+    public ObjectPoolGroup poolGroup;
     public GameAssetConfig[] sceneryConfigs;
     public bool isRightSideSpawner = true;
     public float spawnInterval = 2f;
+
+    public Transform spawnPoint;  // SquareLeft or SquareRight
+    public Transform targetPoint; // CircleLeft or CircleRight
 
     private float timer;
 
@@ -26,30 +29,27 @@ public class ScenerySpawner : MonoBehaviour
         if (validConfigs.Length == 0) return;
 
         var config = validConfigs[Random.Range(0, validConfigs.Length)];
-
-        GameObject obj = poolGroup.Get(config.assetName);       // 🟢 Use assetName as pool ID
+        GameObject obj = poolGroup.Get(config.assetName);
         if (obj == null) return;
-
-        obj.transform.position = GetSpawnPosition(isRightSideSpawner);
-        obj.transform.localScale = Vector3.one * config.initialScale;
-
-        var spriteRenderer = obj.GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null) spriteRenderer.sprite = config.sprite;
 
         var mover = obj.GetComponent<MovingObject>();
         if (mover != null)
         {
-            mover.SetCustomSpeed(config.moveSpeed, config.scaleSpeed,
-                                 config.initialScale, config.maxScale);
+            mover.SetCustomSpeed(config.moveSpeed, config.scaleSpeed, config.initialScale, config.maxScale);
+
+            Vector3 adjustedTarget = targetPoint.position;
+
+            // Push it away from the road further
+            adjustedTarget.x += isRightSideSpawner ? 3.5f : -3.5f;
+
+            mover.SetPath(spawnPoint.position, adjustedTarget, true);
+            mover.InitPooling(poolGroup, config.assetName);
         }
 
-        obj.SetActive(true);
-    }
+        var spriteRenderer = obj.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+            spriteRenderer.sprite = config.sprite;
 
-    Vector3 GetSpawnPosition(bool isRight)
-    {
-        float x = isRight ? 5.5f : -5.5f;
-        float y = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1f, 0)).y + 1f;
-        return new Vector3(x, y, 0f);
+        obj.SetActive(true);
     }
 }

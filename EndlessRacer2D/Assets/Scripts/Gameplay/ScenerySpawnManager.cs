@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class ScenerySpawnManager : MonoBehaviour
@@ -6,9 +5,8 @@ public class ScenerySpawnManager : MonoBehaviour
     public ScenerySpawner leftSpawner;
     public ScenerySpawner rightSpawner;
 
-    void Update()
+    public void Tick(float deltaTime)
     {
-        float deltaTime = Time.deltaTime;
         if (leftSpawner != null)
             leftSpawner.Tick(deltaTime);
         if (rightSpawner != null)

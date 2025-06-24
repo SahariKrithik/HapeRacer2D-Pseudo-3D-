@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assetName: Banana
   sprite: {fileID: 21300000, guid: 814f7d84114861b4e83c5b57c3ec57d1, type: 3}
-  initialScale: 0.2
-  maxScale: 1
-  scaleSpeed: 0.5
-  moveSpeed: 3
+  initialScale: 0.1
+  maxScale: 0.3
+  scaleSpeed: 0.1
+  moveSpeed: 2.2
+  isScenery: 0
+  isRightSide: 1

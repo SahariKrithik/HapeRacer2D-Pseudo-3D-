@@ -1,5 +1,4 @@
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -15,7 +14,7 @@ public class PoolEntry
     [HideInInspector] public Transform parent;
     private bool initialized = false;
 
-    public void Initialize(Transform root)
+    public void Initialize(Transform root, ObjectPoolGroup group)
     {
         if (initialized) return;
         initialized = true;
@@ -28,9 +27,19 @@ public class PoolEntry
             for (int i = 0; i < poolSize; i++)
             {
                 GameObject obj = GameObject.Instantiate(prefab, parent);
+                InitObject(obj, group, id);
                 obj.SetActive(false);
                 pool.Enqueue(obj);
             }
+        }
+    }
+
+    public static void InitObject(GameObject obj, ObjectPoolGroup group, string id)
+    {
+        var moving = obj.GetComponent<MovingObject>();
+        if (moving != null)
+        {
+            moving.InitPooling(group, id);
         }
     }
 }
@@ -44,7 +53,7 @@ public class ObjectPoolGroup : MonoBehaviour
     {
         foreach (var entry in pools)
         {
-            entry.Initialize(transform);
+            entry.Initialize(transform, this);
             lookup[entry.id] = entry;
         }
     }
@@ -54,22 +63,26 @@ public class ObjectPoolGroup : MonoBehaviour
         if (!lookup.ContainsKey(id)) return null;
 
         var entry = lookup[id];
+        GameObject obj = null;
 
         if (entry.pool.Count > 0)
         {
-            var obj = entry.pool.Dequeue();
-            obj.SetActive(true);
-            return obj;
+            obj = entry.pool.Dequeue();
         }
-
-        if (entry.expandable)
+        else if (entry.expandable)
         {
-            GameObject obj = Instantiate(entry.prefab, entry.parent);
-            obj.SetActive(true);
-            return obj;
+            obj = Instantiate(entry.prefab, entry.parent);
+            PoolEntry.InitObject(obj, this, id);
         }
 
-        return null;
+        if (obj != null)
+        {
+            // Safe redundant init for safety in case prefab was not warmed up
+            PoolEntry.InitObject(obj, this, id);
+            obj.SetActive(true);
+        }
+
+        return obj;
     }
 
     public void Return(string id, GameObject obj)

@@ -4,9 +4,9 @@ public class LaneManager : MonoBehaviour
 {
     public static LaneManager Instance;
 
-    public float[] lanePositions = { -3f, 0f, 3f }; // Set in Inspector
+    public float[] lanePositions = { -4f, 0f, 4f }; // Set in Inspector
 
-    void Awake()
+    private void Awake()
     {
         if (Instance == null)
             Instance = this;

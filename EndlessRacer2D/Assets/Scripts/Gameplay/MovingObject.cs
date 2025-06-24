@@ -3,118 +3,106 @@
 public class MovingObject : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    private float destroyY = -6f;
+    private Camera mainCam;
+    private float destroyDistance = 12f;
 
     private float maxScale;
+    private float initialScale;
     private float currentScale;
     private float scaleSpeed;
-    private float moveSpeed;
 
-    private float startX = 0f;
-    private float targetX;
+    private Vector3 startPos;
+    private Vector3 endPos;
     private bool isScenery = false;
 
     private string poolId;
     private ObjectPoolGroup poolGroup;
 
+    private float moveProgress = 0f;
+
+    void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        mainCam = Camera.main;
+    }
+
     void OnEnable()
     {
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
-
-        Sprite selectedSprite = null;
-        GameAssetConfig config = null;
-
-        isScenery = false;
-
-        if (CompareTag("Obstacle"))
-        {
-            var hazardList = GameSettings.Instance.hazardConfigs;
-            int index = Random.Range(0, hazardList.Count);
-            config = hazardList[index];
-        }
-        else if (CompareTag("Coin"))
-        {
-            var coinList = GameSettings.Instance.coinConfigs;
-            int index = Random.Range(0, coinList.Count);
-            config = coinList[index];
-        }
-
-        if (config != null)
-        {
-            selectedSprite = config.sprite;
-            isScenery = config.isScenery;
-            spriteRenderer.sprite = selectedSprite;
-
-            currentScale = config.initialScale;
-            maxScale = config.maxScale;
-            scaleSpeed = config.scaleSpeed;
-            moveSpeed = config.moveSpeed;
-        }
-
-        transform.localScale = Vector3.one * currentScale;
-        startX = 0f;
-        targetX = transform.position.x;
-
-        if (!isScenery)
-            transform.position = new Vector3(startX, transform.position.y, transform.position.z);
+        transform.localScale = Vector3.one * initialScale;
+        currentScale = initialScale;
+        moveProgress = 0f;
     }
 
     void Update()
     {
-        transform.position += Vector3.down * moveSpeed * Time.deltaTime;
-
+        // Grow scale over time
         if (currentScale < maxScale)
         {
             currentScale += scaleSpeed * Time.deltaTime;
             currentScale = Mathf.Min(currentScale, maxScale);
         }
 
-        if (!isScenery)
-        {
-            float t = Mathf.InverseLerp(0.2f, maxScale, currentScale);
-            float newX = Mathf.Lerp(startX, targetX, t);
-            transform.position = new Vector3(newX, transform.position.y, transform.position.z);
-        }
-
         transform.localScale = Vector3.one * currentScale;
 
-        if (transform.position.y < destroyY)
+        // Movement based on interpolation progress
+        moveProgress += Time.deltaTime * 0.5f; // fixed speed for non-scenery
+        transform.position = Vector3.Lerp(startPos, endPos, moveProgress);
+
+        if (moveProgress >= 1f)
         {
-            if (poolGroup != null && !string.IsNullOrEmpty(poolId))
-                poolGroup.Return(poolId, gameObject);
-            else
-                gameObject.SetActive(false);
+            ReturnToPool();
         }
+
+        if (transform.position.y < mainCam.transform.position.y - destroyDistance)
+        {
+            ReturnToPool();
+        }
+
     }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
 
         if (CompareTag("Coin"))
+        {
             FindObjectOfType<ScoreManager>()?.AddPoints(50);
+        }
         else if (CompareTag("Obstacle"))
+        {
             GameManager.Instance.GameOver();
+        }
 
-        if (poolGroup != null && !string.IsNullOrEmpty(poolId))
-            poolGroup.Return(poolId, gameObject);
-        else
-            gameObject.SetActive(false);
+        ReturnToPool();
     }
 
     public void SetCustomSpeed(float move, float scale, float initial, float max)
     {
-        moveSpeed = move;
         scaleSpeed = scale;
-        currentScale = initial;
+        initialScale = initial;
         maxScale = max;
-        transform.localScale = Vector3.one * initial;
     }
 
     public void InitPooling(ObjectPoolGroup group, string id)
     {
         poolGroup = group;
         poolId = id;
+    }
+
+    public void SetPath(Vector3 from, Vector3 to, bool isSceneryObj)
+    {
+        startPos = from;
+        endPos = to;
+        isScenery = isSceneryObj;
+        transform.position = from;
+    }
+
+    private void ReturnToPool()
+    {
+        if (poolGroup != null && !string.IsNullOrEmpty(poolId))
+            poolGroup.Return(poolId, gameObject);
+        else
+            gameObject.SetActive(false);
     }
 }

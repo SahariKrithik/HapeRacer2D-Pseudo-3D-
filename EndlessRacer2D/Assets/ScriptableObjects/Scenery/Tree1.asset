@@ -15,8 +15,8 @@ MonoBehaviour:
   assetName: Tree1
   sprite: {fileID: 21300000, guid: 14213ac66ea6db241987dba852c4102f, type: 3}
   initialScale: 0.2
-  maxScale: 1
-  scaleSpeed: 0.5
-  moveSpeed: 3
+  maxScale: 0.4
+  scaleSpeed: 0.25
+  moveSpeed: 1
   isScenery: 1
-  isRightSide: 1
+  isRightSide: 0

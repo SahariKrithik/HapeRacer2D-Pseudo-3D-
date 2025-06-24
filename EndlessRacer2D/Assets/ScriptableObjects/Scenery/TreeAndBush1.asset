@@ -15,8 +15,8 @@ MonoBehaviour:
   assetName: TreeAndBush1
   sprite: {fileID: 21300000, guid: 7257932883633bf4e9de6ac433ca32f4, type: 3}
   initialScale: 0.2
-  maxScale: 1
-  scaleSpeed: 0.5
-  moveSpeed: 3
+  maxScale: 0.7
+  scaleSpeed: 0.4
+  moveSpeed: 1
   isScenery: 1
   isRightSide: 1
