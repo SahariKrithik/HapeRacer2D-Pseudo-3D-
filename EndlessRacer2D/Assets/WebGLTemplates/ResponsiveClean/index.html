@@ -176,6 +176,18 @@
         unityInstance.SendMessage("GameManager", "ReceiveInputFromOverlay", value);
       }
     };
+
+    // NEW: Clipboard API Hook
+    window.enablePasteClipboard = function () {
+      window.addEventListener("paste", function (event) {
+        const pastedText = (event.clipboardData || window.clipboardData).getData("text");
+        if (unityInstance && pastedText.length > 0) {
+          unityInstance.SendMessage("StartScreenManager", "SetWalletInputFromJS", pastedText);
+        }
+        event.preventDefault(); // avoid default paste
+      });
+    };
   </script>
+
 </body>
 </html>

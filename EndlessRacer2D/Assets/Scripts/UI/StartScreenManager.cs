@@ -41,6 +41,10 @@ public class StartScreenManager : MonoBehaviour
                 closeLeaderboardButton
             );
         }
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        Application.ExternalEval("enablePasteClipboard()");
+#endif
     }
 
     public void StartGame()
@@ -63,5 +67,18 @@ public class StartScreenManager : MonoBehaviour
         Debug.Log($"Starting game for {playerName} with wallet {walletAddress}");
 
         SceneManager.LoadScene("MainGame");
+    }
+
+    // Called from paste button (right-click or UI)
+    public void PasteFromClipboard()
+    {
+        manualWalletInput.text = GUIUtility.systemCopyBuffer;
+    }
+
+    // Called from JavaScript (Clipboard API)
+    public void SetWalletInputFromJS(string value)
+    {
+        Debug.Log("Received clipboard text from JS: " + value);
+        manualWalletInput.text = value;
     }
 }
