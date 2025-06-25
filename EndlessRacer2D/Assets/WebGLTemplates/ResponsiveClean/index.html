@@ -22,6 +22,8 @@
         align-items: center;
         justify-content: center;
         background: #111;
+        flex-direction: column;
+        position: relative;
       }
 
       #unity-canvas {
@@ -33,10 +35,12 @@
 
       #unity-loading-bar {
         position: absolute;
-        top: 20px;
+        top: 40%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
         z-index: 10;
+        text-align: center;
+        color: #ccc;
       }
 
       #unity-progress-bar-empty {
@@ -45,6 +49,7 @@
         background: #444;
         border-radius: 8px;
         overflow: hidden;
+        margin: 10px auto;
       }
 
       #unity-progress-bar-full {
@@ -52,6 +57,18 @@
         width: 0%;
         background: linear-gradient(to right, #00c6ff, #0072ff);
         transition: width 0.2s ease;
+      }
+
+      #instructions {
+        font-size: 14px;
+        color: #ccc;
+        margin-top: 8px;
+      }
+
+      #hape-logo {
+        max-width: 120px;
+        margin: 0 auto 10px;
+        display: block;
       }
 
       input#mobileInputOverlay {
@@ -71,15 +88,22 @@
 
   <body>
     <div id="unity-container">
-      <canvas id="unity-canvas" tabindex="-1"></canvas>
+      <!-- HAPE Logo inserted here -->
+      <img src="HapeLogoNoBG.png" id="hape-logo" alt="HAPE Logo" />
+
       <div id="unity-loading-bar">
         <div id="unity-progress-bar-empty">
           <div id="unity-progress-bar-full"></div>
         </div>
+        <div id="instructions">
+          Use ← or "A" to move left<br />
+          Use → or "D" to move right
+        </div>
       </div>
+
+      <canvas id="unity-canvas" tabindex="-1"></canvas>
     </div>
 
-    <!-- Hidden input field for mobile keyboards -->
     <input
       id="mobileInputOverlay"
       type="text"
