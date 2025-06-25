@@ -71,6 +71,22 @@
         display: block;
       }
 
+      /* Spinner Styles */
+      .spinner {
+        width: 32px;
+        height: 32px;
+        border: 4px solid #333;
+        border-top: 4px solid #00c6ff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 12px auto 0;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
       input#mobileInputOverlay {
         position: absolute;
         top: -100px;
@@ -95,9 +111,11 @@
         <div id="unity-progress-bar-empty">
           <div id="unity-progress-bar-full"></div>
         </div>
+        <div class="spinner"></div>
         <div id="instructions">
           Use ← or "A" to move left<br />
-          Use → or "D" to move right
+          Use → or "D" to move right<br />
+          Collect Bananas for BONUS POINTS!!
         </div>
       </div>
 
