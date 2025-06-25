@@ -1393,7 +1393,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5b8806def53303945a77f957dd339e96, type: 2}
   - {fileID: 11400000, guid: 9572eac3a29b8e94f82901351d41c73a, type: 2}
   isRightSideSpawner: 1
-  spawnInterval: 2
+  spawnInterval: 0.75
   spawnPoint: {fileID: 914629181}
   targetPoint: {fileID: 2033134406}
 --- !u!1 &838186669
@@ -1544,6 +1544,7 @@ GameObject:
   - component: {fileID: 888052796}
   - component: {fileID: 888052797}
   - component: {fileID: 888052798}
+  - component: {fileID: 888052799}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1657,12 +1658,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phases:
   - renderer: {fileID: 703138488}
-    holdDuration: 5
+    holdDuration: 15
   - renderer: {fileID: 750947826}
-    holdDuration: 5
+    holdDuration: 15
   - renderer: {fileID: 122012108}
-    holdDuration: 5
+    holdDuration: 15
   fadeDuration: 2
+--- !u!114 &888052799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888052792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac5a122ca3734c3448ed5b7cd5eb0e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phase1Duration: 20
+  phase2Duration: 20
+  sceneryPhase1: 1
+  sceneryPhase2: 0.75
+  sceneryPhase3: 0.5
+  hazardPhase1: 1.5
+  hazardPhase2: 1
+  hazardPhase3: 0.8
+  leftScenerySpawner: {fileID: 1571806740}
+  rightScenerySpawner: {fileID: 813325789}
+  hazardCoinSpawner: {fileID: 390206842}
 --- !u!1 &914629179
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,7 +2494,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5b8806def53303945a77f957dd339e96, type: 2}
   - {fileID: 11400000, guid: 9572eac3a29b8e94f82901351d41c73a, type: 2}
   isRightSideSpawner: 0
-  spawnInterval: 3
+  spawnInterval: 0.75
   spawnPoint: {fileID: 1658797714}
   targetPoint: {fileID: 1296668197}
 --- !u!1 &1633303039
