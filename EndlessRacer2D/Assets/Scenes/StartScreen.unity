@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameInput: {fileID: 490093765}
+  manualWalletInput: {fileID: 0}
   walletDisplayText: {fileID: 1576544736}
   leaderboardText: {fileID: 88753681}
   leaderboardButton: {fileID: 2034846417}
@@ -708,6 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameInput: {fileID: 490093765}
+  manualWalletInput: {fileID: 1401860114}
   walletDisplayText: {fileID: 1576544736}
   leaderboardText: {fileID: 88753681}
   leaderboardButton: {fileID: 2034846417}

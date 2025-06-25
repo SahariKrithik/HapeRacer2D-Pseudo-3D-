@@ -7,6 +7,7 @@ public class StartScreenManager : MonoBehaviour
 {
     [Header("UI References")]
     public TMP_InputField nameInput;
+    public TMP_InputField manualWalletInput;
     public TMP_Text walletDisplayText;
     public TMP_Text leaderboardText;
     public Button leaderboardButton;
@@ -15,6 +16,22 @@ public class StartScreenManager : MonoBehaviour
 
     void Start()
     {
+        // Auto-fill from last session
+        string savedName = PlayerPrefs.GetString("PlayerName", "");
+        string savedWallet = PlayerPrefs.GetString("WalletAddress", "");
+
+        if (!string.IsNullOrEmpty(savedName))
+        {
+            nameInput.text = savedName;
+        }
+
+        if (!string.IsNullOrEmpty(savedWallet))
+        {
+            manualWalletInput.text = savedWallet;
+            walletDisplayText.text = savedWallet;
+        }
+
+        // Rebind leaderboard
         if (BackendManager.Instance != null)
         {
             BackendManager.Instance.RebindLeaderboard(
@@ -29,15 +46,15 @@ public class StartScreenManager : MonoBehaviour
     public void StartGame()
     {
         string playerName = nameInput.text.Trim();
-        string walletAddress = walletDisplayText.text.Trim();
+        string walletAddress = manualWalletInput.text.Trim();
 
-        if (string.IsNullOrEmpty(playerName) ||
-            string.IsNullOrEmpty(walletAddress) ||
-            walletAddress == "Your Wallet Address")
+        if (string.IsNullOrEmpty(playerName) || string.IsNullOrEmpty(walletAddress))
         {
-            Debug.LogWarning("Please enter your name and connect your wallet before starting.");
+            Debug.LogWarning("Please enter your name and wallet address before starting.");
             return;
         }
+
+        walletDisplayText.text = walletAddress;
 
         PlayerPrefs.SetString("PlayerName", playerName);
         PlayerPrefs.SetString("WalletAddress", walletAddress);
@@ -46,10 +63,5 @@ public class StartScreenManager : MonoBehaviour
         Debug.Log($"Starting game for {playerName} with wallet {walletAddress}");
 
         SceneManager.LoadScene("MainGame");
-    }
-
-    public void ReceiveInputFromOverlay(string value)
-    {
-        nameInput.text = value;
     }
 }
