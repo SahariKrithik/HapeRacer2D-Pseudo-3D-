@@ -869,6 +869,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6364a407100920f4394e4f7f47d66c4c, type: 2}
   spawnInterval: 1.5
   spawnYOffset: -2.25
+  enableDoubleHazardInPhase2And3: 1
+  doubleHazardChance: 0.25
 --- !u!4 &390206843
 Transform:
   m_ObjectHideFlags: 0
@@ -1676,12 +1678,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5a122ca3734c3448ed5b7cd5eb0e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase1Duration: 20
-  phase2Duration: 20
-  sceneryPhase1: 1
+  phase1Duration: 15
+  phase2Duration: 15
+  sceneryPhase1: 0.9
   sceneryPhase2: 0.75
   sceneryPhase3: 0.5
-  hazardPhase1: 1.5
+  hazardPhase1: 1.25
   hazardPhase2: 1
   hazardPhase3: 0.8
   leftScenerySpawner: {fileID: 1571806740}

@@ -64,6 +64,9 @@ public class SpawnDifficultyManager : MonoBehaviour
                 break;
         }
 
+        if (hazardCoinSpawner != null)
+            hazardCoinSpawner.SetPhase(phase);
+
         Debug.Log($"Phase {phase} started");
     }
 
