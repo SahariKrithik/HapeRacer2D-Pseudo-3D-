@@ -133,6 +133,35 @@ public class BackendManager : MonoBehaviour
 
         return result;
     }
+    public void FetchUserHighScore(string wallet, System.Action<int> onResult)
+    {
+        StartCoroutine(FetchUserHighScoreRoutine(wallet, onResult));
+    }
+
+    IEnumerator FetchUserHighScoreRoutine(string wallet, System.Action<int> onResult)
+    {
+        using UnityWebRequest request = UnityWebRequest.Get(serverURL + "/user-high-score?wallet=" + wallet);
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            if (int.TryParse(request.downloadHandler.text, out int highScore))
+            {
+                onResult?.Invoke(highScore);
+            }
+            else
+            {
+                Debug.LogWarning("Failed to parse high score from server.");
+                onResult?.Invoke(0);
+            }
+        }
+        else
+        {
+            Debug.LogError("Failed to fetch user high score: " + request.error);
+            onResult?.Invoke(0);
+        }
+    }
+
 
     [System.Serializable]
     public class ScoreData

@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject newHighScoreText;
     public Button restartButton;
 
+    private int serverHighScore = -1; // fetched from server
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -24,9 +26,15 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
-        QualitySettings.vSyncCount = 0; // Prevent VSync bottleneck
-    }
+        QualitySettings.vSyncCount = 0;
 
+        string wallet = PlayerPrefs.GetString("WalletAddress", "0xNoWallet");
+        BackendManager.Instance.FetchUserHighScore(wallet, (fetchedScore) =>
+        {
+            serverHighScore = fetchedScore;
+            Debug.Log("Fetched server high score: " + serverHighScore);
+        });
+    }
 
     public void GameOver()
     {
@@ -37,17 +45,15 @@ public class GameManager : MonoBehaviour
 
         ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
         int finalScore = scoreManager.GetScore();
-        int prevHigh = PlayerPrefs.GetInt("HighScore", 0);
 
-        // Save high score if beaten
-        if (finalScore > prevHigh)
+        bool isNewHighScore = finalScore > serverHighScore;
+
+        if (isNewHighScore)
         {
-            PlayerPrefs.SetInt("HighScore", finalScore);
-            PlayerPrefs.Save();
             newHighScoreText.SetActive(true);
         }
 
-        // 🟩 Submit score to backend
+        // Submit score to backend
         string playerName = PlayerPrefs.GetString("PlayerName", "Guest");
         string wallet = PlayerPrefs.GetString("WalletAddress", "0xNoWallet");
         BackendManager.Instance.SubmitScore(playerName, wallet, finalScore);
@@ -59,10 +65,9 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        Time.timeScale = 1; // Resume time in case it's paused
-        SceneManager.LoadScene("StartScreen"); // Replace with your actual start scene name
+        Time.timeScale = 1;
+        SceneManager.LoadScene("StartScreen");
     }
-
 
     public void RestartGame()
     {
@@ -72,15 +77,11 @@ public class GameManager : MonoBehaviour
 
     public void ResetHighScore()
     {
-        PlayerPrefs.DeleteKey("HighScore");
-        PlayerPrefs.Save();
-
+        // No longer needed; server-managed
         if (finalScoreText != null)
             finalScoreText.text = "Score: 0";
 
         if (newHighScoreText != null)
             newHighScoreText.SetActive(false);
     }
-
-
 }
