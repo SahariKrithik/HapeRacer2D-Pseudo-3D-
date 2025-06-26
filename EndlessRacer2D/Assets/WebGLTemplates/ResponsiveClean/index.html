@@ -101,13 +101,29 @@
     #unity-warning {
       display: none;
     }
+
+    #mobile-warning {
+      display: none;
+      color: white;
+      background: #111;
+      font-size: 18px;
+      text-align: center;
+      padding: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   </style>
 </head>
 
 <body>
+  <!-- Mobile warning -->
+  <div id="mobile-warning">⚠️ This game is only available on desktop.</div>
+
+  <!-- Unity container -->
   <div id="unity-container">
     <img src="HapeLogoNoBG.png" id="hape-logo" alt="HAPE Logo" />
-
     <div id="unity-loading-bar">
       <div id="unity-progress-bar-empty">
         <div id="unity-progress-bar-full"></div>
@@ -119,7 +135,6 @@
         Collect Bananas for BONUS POINTS!!
       </div>
     </div>
-
     <canvas id="unity-canvas" tabindex="-1"></canvas>
   </div>
 
@@ -130,64 +145,71 @@
     oninput="sendToUnity(this.value)" />
 
   <script>
-    const buildUrl = "Build";
-    const loaderUrl = `${buildUrl}/{{{ LOADER_FILENAME }}}`;
+    function isMobileDevice() {
+      return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
 
-    const config = {
-      dataUrl: `${buildUrl}/{{{ DATA_FILENAME }}}`,
-      frameworkUrl: `${buildUrl}/{{{ FRAMEWORK_FILENAME }}}`,
-      codeUrl: `${buildUrl}/{{{ CODE_FILENAME }}}`,
-      streamingAssetsUrl: "StreamingAssets",
-      companyName: "{{{ COMPANY_NAME }}}",
-      productName: "{{{ PRODUCT_NAME }}}",
-      productVersion: "{{{ PRODUCT_VERSION }}}",
-      devicePixelRatio: 1,
-      canvas: document.querySelector("#unity-canvas")
-    };
+    if (isMobileDevice()) {
+      document.getElementById("unity-container").style.display = "none";
+      document.getElementById("mobile-warning").style.display = "block";
+    } else {
+      const buildUrl = "Build";
+      const loaderUrl = `${buildUrl}/{{{ LOADER_FILENAME }}}`;
 
-    let unityInstance = null;
+      const config = {
+        dataUrl: `${buildUrl}/{{{ DATA_FILENAME }}}`,
+        frameworkUrl: `${buildUrl}/{{{ FRAMEWORK_FILENAME }}}`,
+        codeUrl: `${buildUrl}/{{{ CODE_FILENAME }}}`,
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "{{{ COMPANY_NAME }}}",
+        productName: "{{{ PRODUCT_NAME }}}",
+        productVersion: "{{{ PRODUCT_VERSION }}}",
+        devicePixelRatio: 1,
+        canvas: document.querySelector("#unity-canvas")
+      };
 
-    window.addEventListener("load", () => {
-      const script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(config.canvas, config, (progress) => {
-          document.querySelector("#unity-progress-bar-full").style.width = `${progress * 100}%`;
-        }).then((instance) => {
-          unityInstance = instance;
-          document.querySelector("#unity-loading-bar").style.display = "none";
-        }).catch((err) => {
-          alert("Failed to load Unity WebGL build.\n" + err);
+      let unityInstance = null;
+
+      window.addEventListener("load", () => {
+        const script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+          createUnityInstance(config.canvas, config, (progress) => {
+            document.querySelector("#unity-progress-bar-full").style.width = `${progress * 100}%`;
+          }).then((instance) => {
+            unityInstance = instance;
+            document.querySelector("#unity-loading-bar").style.display = "none";
+          }).catch((err) => {
+            alert("Failed to load Unity WebGL build.\n" + err);
+          });
+        };
+        document.body.appendChild(script);
+      });
+
+      window.showMobileKeyboard = function (initialValue) {
+        const input = document.getElementById("mobileInputOverlay");
+        input.value = initialValue || "";
+        input.style.top = "50%";
+        input.focus();
+        input.setSelectionRange(input.value.length, input.value.length);
+      };
+
+      window.sendToUnity = function (value) {
+        if (unityInstance) {
+          unityInstance.SendMessage("GameManager", "ReceiveInputFromOverlay", value);
+        }
+      };
+
+      window.enablePasteClipboard = function () {
+        window.addEventListener("paste", function (event) {
+          const pastedText = (event.clipboardData || window.clipboardData).getData("text");
+          if (unityInstance && pastedText.length > 0) {
+            unityInstance.SendMessage("StartScreenManager", "SetWalletInputFromJS", pastedText);
+          }
+          event.preventDefault();
         });
       };
-      document.body.appendChild(script);
-    });
-
-    window.showMobileKeyboard = function (initialValue) {
-      const input = document.getElementById("mobileInputOverlay");
-      input.value = initialValue || "";
-      input.style.top = "50%";
-      input.focus();
-      input.setSelectionRange(input.value.length, input.value.length);
-    };
-
-    window.sendToUnity = function (value) {
-      if (unityInstance) {
-        unityInstance.SendMessage("GameManager", "ReceiveInputFromOverlay", value);
-      }
-    };
-
-    // NEW: Clipboard API Hook
-    window.enablePasteClipboard = function () {
-      window.addEventListener("paste", function (event) {
-        const pastedText = (event.clipboardData || window.clipboardData).getData("text");
-        if (unityInstance && pastedText.length > 0) {
-          unityInstance.SendMessage("StartScreenManager", "SetWalletInputFromJS", pastedText);
-        }
-        event.preventDefault(); // avoid default paste
-      });
-    };
+    }
   </script>
-
 </body>
 </html>
