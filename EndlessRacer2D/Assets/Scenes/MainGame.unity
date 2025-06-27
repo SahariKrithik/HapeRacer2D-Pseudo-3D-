@@ -2631,19 +2631,19 @@ MonoBehaviour:
   pools:
   - id: Coin1
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 3
+    poolSize: 4
     warmUp: 1
     expandable: 1
     parent: {fileID: 0}
   - id: Coin2
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 3
+    poolSize: 4
     warmUp: 1
     expandable: 1
     parent: {fileID: 0}
   - id: Coin3
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 3
+    poolSize: 4
     warmUp: 1
     expandable: 1
     parent: {fileID: 0}

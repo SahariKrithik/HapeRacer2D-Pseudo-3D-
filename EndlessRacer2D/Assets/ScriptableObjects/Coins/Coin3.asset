@@ -15,8 +15,8 @@ MonoBehaviour:
   assetName: Coin3
   sprite: {fileID: 21300000, guid: 6a75ef111bde3874c8db9697309d197f, type: 3}
   initialScale: 0.1
-  maxScale: 0.3
-  scaleSpeed: 0.15
-  moveSpeed: 3
+  maxScale: 0.45
+  scaleSpeed: 0.21
+  moveSpeed: 2.6
   isScenery: 0
   isRightSide: 1
