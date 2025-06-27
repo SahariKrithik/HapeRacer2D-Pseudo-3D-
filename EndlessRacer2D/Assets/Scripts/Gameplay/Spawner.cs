@@ -43,7 +43,16 @@ public class Spawner : MonoBehaviour
             obstacle.transform.position = spawnPos;
 
             var mover = obstacle.GetComponent<MovingObject>();
-            mover?.InitPooling(poolGroup, "Obstacle");
+            if (mover != null)
+            {
+                var config = GameSettings.Instance.GetHazardConfig(obstacle.GetComponent<SpriteRenderer>().sprite);
+                if (config != null)
+                {
+                    mover.SetCustomSpeed(config.moveSpeed, config.scaleSpeed, config.initialScale, config.maxScale);
+                }
+
+                mover.InitPooling(poolGroup, "Obstacle");
+            }
 
             usedLanes.Add(lane);
         }
@@ -68,7 +77,16 @@ public class Spawner : MonoBehaviour
             coin.transform.position = spawnPos;
 
             var mover = coin.GetComponent<MovingObject>();
-            mover?.InitPooling(poolGroup, "Coin");
+            if (mover != null)
+            {
+                var config = GameSettings.Instance.GetCoinConfig(coin.GetComponent<SpriteRenderer>().sprite);
+                if (config != null)
+                {
+                    mover.SetCustomSpeed(config.moveSpeed, config.scaleSpeed, config.initialScale, config.maxScale);
+                }
+
+                mover.InitPooling(poolGroup, "Coin");
+            }
         }
     }
 

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98f6bb7d468b9d64facd70e13592eb7a, type: 3}
-  m_Name: Barricade1
+  m_Name: BananaEnemy1
   m_EditorClassIdentifier: 
-  assetName: Barricade1
-  sprite: {fileID: 21300000, guid: 051e2c2c9b11e334abd464dbb574a77e, type: 3}
-  initialScale: 0.3
-  maxScale: 0.6
-  scaleSpeed: 0.35
+  assetName: BananaEnemy1
+  sprite: {fileID: 21300000, guid: f4947fc0b386e6d45b0fbec08dc4c91b, type: 3}
+  initialScale: 0.2
+  maxScale: 0.65
+  scaleSpeed: 0.25
   moveSpeed: 2
   isScenery: 0
   isRightSide: 1

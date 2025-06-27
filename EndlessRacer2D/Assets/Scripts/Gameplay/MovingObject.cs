@@ -31,6 +31,7 @@ public class MovingObject : MonoBehaviour
         transform.localScale = Vector3.one * initialScale;
         currentScale = initialScale;
         moveProgress = 0f;
+        transform.position = startPos; // fjgnkjfg
     }
 
     void Update()

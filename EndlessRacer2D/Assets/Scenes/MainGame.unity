@@ -207,7 +207,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.5, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.37, y: 0.37, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 531221518}
@@ -261,7 +261,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0074005127, y: -0.23508358}
+  m_Offset: {x: 0.021606922, y: -0.25828993}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -272,7 +272,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.88192, y: 5.5695696}
+  m_Size: {x: 8.615052, y: 5.523157}
   m_EdgeRadius: 0
 --- !u!50 &6102563
 Rigidbody2D:
@@ -930,12 +930,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9f8704ff347d6a64fafd7d01a5225582, type: 2}
   - {fileID: 11400000, guid: a041181c4488b2f47a2785b6e171108d, type: 2}
   - {fileID: 11400000, guid: f923732388464c447b388ef580b15021, type: 2}
+  - {fileID: 11400000, guid: 4c00986afe93d414a9afae9883234a79, type: 2}
+  - {fileID: 11400000, guid: 9a10cb94b448f5946b8f68e660e5e227, type: 2}
+  - {fileID: 11400000, guid: 0e45dca9fda27c54bacbf58d0da0bbb1, type: 2}
+  - {fileID: 11400000, guid: 69ee2d0389695194d89e9f9f741190c5, type: 2}
+  - {fileID: 11400000, guid: b02c29cd27bdd3d4d94200796fdfb7b1, type: 2}
+  - {fileID: 11400000, guid: 85f50f747efad95458cd66a882f6790e, type: 2}
+  - {fileID: 11400000, guid: 81b2fd1fd53a09a408c748504b3a6740, type: 2}
+  - {fileID: 11400000, guid: 6f37ed6ae9fa89d46b4a17e040ce18ad, type: 2}
+  - {fileID: 11400000, guid: 195175d4281b55c42a8ae2c0c9f86148, type: 2}
   coinConfigs:
   - {fileID: 11400000, guid: 6364a407100920f4394e4f7f47d66c4c, type: 2}
   - {fileID: 11400000, guid: 271cd36e878a1624bb13c94509ebd079, type: 2}
   - {fileID: 11400000, guid: 456cabb0ef696684fb808204cc070ef8, type: 2}
   spawnInterval: 1.5
   spawnYOffset: -2.25
+  endYOffset: -2.5
+  endOffsetXLeft: -4
+  endOffsetXRight: 4
   enableDoubleHazardInPhase2And3: 1
   doubleHazardChance: 0.25
 --- !u!4 &390206843
@@ -1748,9 +1760,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hazardConfigs:
+  - {fileID: 11400000, guid: 85f50f747efad95458cd66a882f6790e, type: 2}
   - {fileID: 11400000, guid: 9f8704ff347d6a64fafd7d01a5225582, type: 2}
   - {fileID: 11400000, guid: a041181c4488b2f47a2785b6e171108d, type: 2}
   - {fileID: 11400000, guid: f923732388464c447b388ef580b15021, type: 2}
+  - {fileID: 11400000, guid: 4c00986afe93d414a9afae9883234a79, type: 2}
+  - {fileID: 11400000, guid: 9a10cb94b448f5946b8f68e660e5e227, type: 2}
+  - {fileID: 11400000, guid: 0e45dca9fda27c54bacbf58d0da0bbb1, type: 2}
+  - {fileID: 11400000, guid: 69ee2d0389695194d89e9f9f741190c5, type: 2}
+  - {fileID: 11400000, guid: b02c29cd27bdd3d4d94200796fdfb7b1, type: 2}
+  - {fileID: 11400000, guid: 195175d4281b55c42a8ae2c0c9f86148, type: 2}
+  - {fileID: 11400000, guid: 6f37ed6ae9fa89d46b4a17e040ce18ad, type: 2}
+  - {fileID: 11400000, guid: 81b2fd1fd53a09a408c748504b3a6740, type: 2}
   coinConfigs:
   - {fileID: 11400000, guid: 6364a407100920f4394e4f7f47d66c4c, type: 2}
   - {fileID: 11400000, guid: 271cd36e878a1624bb13c94509ebd079, type: 2}
@@ -1800,14 +1821,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5a122ca3734c3448ed5b7cd5eb0e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase1Duration: 3
-  phase2Duration: 3
+  phase1Duration: 10
+  phase2Duration: 10
   sceneryPhase1: 0.9
   sceneryPhase2: 0.75
   sceneryPhase3: 0.35
   hazardPhase1: 1.25
   hazardPhase2: 1
-  hazardPhase3: 0.88
+  hazardPhase3: 0.935
   leftScenerySpawner: {fileID: 1571806740}
   rightScenerySpawner: {fileID: 813325789}
   hazardCoinSpawner: {fileID: 390206842}
@@ -2506,6 +2527,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolGroup: {fileID: 1481720364}
+  coinConfigs:
+  - {fileID: 11400000, guid: 6364a407100920f4394e4f7f47d66c4c, type: 2}
+  - {fileID: 11400000, guid: 271cd36e878a1624bb13c94509ebd079, type: 2}
+  - {fileID: 11400000, guid: 456cabb0ef696684fb808204cc070ef8, type: 2}
+  hazardConfigs:
+  - {fileID: 11400000, guid: 85f50f747efad95458cd66a882f6790e, type: 2}
+  - {fileID: 11400000, guid: 9f8704ff347d6a64fafd7d01a5225582, type: 2}
+  - {fileID: 11400000, guid: a041181c4488b2f47a2785b6e171108d, type: 2}
+  - {fileID: 11400000, guid: f923732388464c447b388ef580b15021, type: 2}
+  - {fileID: 11400000, guid: 4c00986afe93d414a9afae9883234a79, type: 2}
+  - {fileID: 11400000, guid: 9a10cb94b448f5946b8f68e660e5e227, type: 2}
+  - {fileID: 11400000, guid: 0e45dca9fda27c54bacbf58d0da0bbb1, type: 2}
+  - {fileID: 11400000, guid: 69ee2d0389695194d89e9f9f741190c5, type: 2}
+  - {fileID: 11400000, guid: b02c29cd27bdd3d4d94200796fdfb7b1, type: 2}
+  - {fileID: 11400000, guid: 195175d4281b55c42a8ae2c0c9f86148, type: 2}
+  - {fileID: 11400000, guid: 6f37ed6ae9fa89d46b4a17e040ce18ad, type: 2}
+  - {fileID: 11400000, guid: 81b2fd1fd53a09a408c748504b3a6740, type: 2}
   spawnInterval: 2
 --- !u!1 &1280946106
 GameObject:
@@ -2595,7 +2633,7 @@ GameObject:
   - component: {fileID: 1481720363}
   - component: {fileID: 1481720364}
   m_Layer: 0
-  m_Name: SceneryPoolGroup
+  m_Name: PoolGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2631,19 +2669,91 @@ MonoBehaviour:
   pools:
   - id: Coin1
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 0
-    warmUp: 0
-    expandable: 0
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
     parent: {fileID: 0}
   - id: Coin2
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 5
+    poolSize: 6
     warmUp: 1
     expandable: 1
     parent: {fileID: 0}
   - id: Coin3
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 5
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
+    parent: {fileID: 0}
+  - id: Oil1
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
+    parent: {fileID: 0}
+  - id: Hole1
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
+    parent: {fileID: 0}
+  - id: HazardSign1
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
+    parent: {fileID: 0}
+  - id: BananaEnemy1
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
+    parent: {fileID: 0}
+  - id: Barricade1
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
+    parent: {fileID: 0}
+  - id: Barricade2
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
+    parent: {fileID: 0}
+  - id: BikeEnemy1
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
+    parent: {fileID: 0}
+  - id: BikeEnemy2
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
+    parent: {fileID: 0}
+  - id: BikeEnemy3
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
+    parent: {fileID: 0}
+  - id: CarEnemy1
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
+    parent: {fileID: 0}
+  - id: CarEnemy2
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
+    parent: {fileID: 0}
+  - id: CarEnemy3
+    prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
+    poolSize: 6
     warmUp: 1
     expandable: 1
     parent: {fileID: 0}
@@ -3770,7 +3880,7 @@ SceneRoots:
   - {fileID: 6102560}
   - {fileID: 1224359069}
   - {fileID: 258833695}
+  - {fileID: 1280946107}
   - {fileID: 1633303040}
   - {fileID: 1481720363}
-  - {fileID: 1280946107}
   - {fileID: 390206843}

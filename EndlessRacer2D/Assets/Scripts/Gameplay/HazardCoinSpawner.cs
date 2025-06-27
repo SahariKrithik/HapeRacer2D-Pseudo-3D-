@@ -8,6 +8,11 @@ public class HazardCoinSpawner : MonoBehaviour
 
     public float spawnInterval = 2.5f;
     public float spawnYOffset = -2.25f;
+    public float endYOffset = -2.5f;
+
+    [Header("End Lane X Offsets")]
+    public float endOffsetXLeft = -1f;    // Applies when laneIndex == 0
+    public float endOffsetXRight = 1f;    // Applies when laneIndex == 2
 
     [Header("Advanced Spawning")]
     public bool enableDoubleHazardInPhase2And3 = true;
@@ -42,7 +47,6 @@ public class HazardCoinSpawner : MonoBehaviour
         int laneIndex = GetAvailableLane(-1);
         SpawnSingle(configList, laneIndex);
 
-        // Optional second hazard in phase 2/3
         if (!spawnCoin && enableDoubleHazardInPhase2And3 && currentPhase >= 2 && Random.value < doubleHazardChance)
         {
             int secondLane = GetAvailableLane(laneIndex);
@@ -59,15 +63,23 @@ public class HazardCoinSpawner : MonoBehaviour
         GameObject obj = poolGroup.Get(config.assetName);
         if (obj == null) return;
 
-        // Offset per lane
+        // Start position X offset
         float offsetX = laneIndex == 0 ? -0.3f : laneIndex == 2 ? 0.3f : 0f;
         float laneX = LaneManager.Instance.GetLaneX(laneIndex);
 
         float yStart = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1f, 0)).y + spawnYOffset;
-        float yEnd = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0f, 0)).y - 1f;
+
+        // End position Y with slight jitter
+        float jitter = Random.Range(-0.3f, 0.3f);
+        float yEnd = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0f, 0)).y + endYOffset + jitter;
+
+        // Apply X offset to end position only
+        float endX = laneX;
+        if (laneIndex == 0) endX += endOffsetXLeft;
+        else if (laneIndex == 2) endX += endOffsetXRight;
 
         Vector3 start = new Vector3(offsetX, yStart, 0f);
-        Vector3 end = new Vector3(laneX, yEnd, 0f);
+        Vector3 end = new Vector3(endX, yEnd, 0f);
 
         var mover = obj.GetComponent<MovingObject>();
         if (mover != null)

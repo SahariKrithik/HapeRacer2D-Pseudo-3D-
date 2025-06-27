@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98f6bb7d468b9d64facd70e13592eb7a, type: 3}
-  m_Name: Barricade1
+  m_Name: CarEnemy1
   m_EditorClassIdentifier: 
-  assetName: Barricade1
-  sprite: {fileID: 21300000, guid: 051e2c2c9b11e334abd464dbb574a77e, type: 3}
-  initialScale: 0.3
-  maxScale: 0.6
-  scaleSpeed: 0.35
+  assetName: CarEnemy1
+  sprite: {fileID: 21300000, guid: b122805b9d318904fb539698e59fc107, type: 3}
+  initialScale: 0.2
+  maxScale: 0.675
+  scaleSpeed: 0.275
   moveSpeed: 2
   isScenery: 0
   isRightSide: 1
