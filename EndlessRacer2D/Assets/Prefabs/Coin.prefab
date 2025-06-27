@@ -98,13 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e522e815d12a494b82bcdd4db7b7dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  scaleSpeed: 0.15
-  hazardConfigs: []
-  coinConfigs:
-  - sprite: {fileID: 21300000, guid: 814f7d84114861b4e83c5b57c3ec57d1, type: 3}
-    initialScale: 0.05
-    maxScale: 0.275
 --- !u!58 &4193034516117933059
 CircleCollider2D:
   m_ObjectHideFlags: 0

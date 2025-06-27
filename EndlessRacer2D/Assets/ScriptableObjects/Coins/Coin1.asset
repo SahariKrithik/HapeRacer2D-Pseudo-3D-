@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98f6bb7d468b9d64facd70e13592eb7a, type: 3}
-  m_Name: Coin
+  m_Name: Coin1
   m_EditorClassIdentifier: 
-  assetName: Banana
+  assetName: Coin1
   sprite: {fileID: 21300000, guid: 814f7d84114861b4e83c5b57c3ec57d1, type: 3}
   initialScale: 0.1
   maxScale: 0.3
