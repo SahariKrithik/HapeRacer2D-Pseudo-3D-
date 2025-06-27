@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Coin1
   m_EditorClassIdentifier: 
   assetName: Coin1
-  sprite: {fileID: 21300000, guid: 814f7d84114861b4e83c5b57c3ec57d1, type: 3}
+  sprite: {fileID: 21300000, guid: 4220fec04a8c2894fbf237ab2fa97bcb, type: 3}
   initialScale: 0.1
   maxScale: 0.3
   scaleSpeed: 0.15
