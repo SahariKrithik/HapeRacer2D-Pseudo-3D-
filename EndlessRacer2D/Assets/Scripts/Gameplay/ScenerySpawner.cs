@@ -7,8 +7,8 @@ public class ScenerySpawner : MonoBehaviour
     public bool isRightSideSpawner = true;
     public float spawnInterval = 2f;
 
-    public Transform spawnPoint;  // SquareLeft or SquareRight
-    public Transform targetPoint; // CircleLeft or CircleRight
+    public Transform spawnPoint;
+    public Transform targetPoint;
 
     private float timer;
 
@@ -37,9 +37,10 @@ public class ScenerySpawner : MonoBehaviour
         {
             mover.SetCustomSpeed(config.moveSpeed, config.scaleSpeed, config.initialScale, config.maxScale);
 
-            Vector3 adjustedTarget = targetPoint.position;
+            obj.transform.localScale = Vector3.one * config.initialScale;
+            Debug.Log($"[ScenerySpawner] Forced scale reset before enabling: {obj.transform.localScale}");
 
-            // Push it away from the road further
+            Vector3 adjustedTarget = targetPoint.position;
             adjustedTarget.x += isRightSideSpawner ? 3.5f : -3.5f;
 
             mover.SetPath(spawnPoint.position, adjustedTarget, true);
@@ -50,6 +51,7 @@ public class ScenerySpawner : MonoBehaviour
         if (spriteRenderer != null)
             spriteRenderer.sprite = config.sprite;
 
+        // ✅ Activation now happens after all setup
         obj.SetActive(true);
     }
 }

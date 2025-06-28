@@ -16,7 +16,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 41332eb177148d1488c1596396be9dcf, type: 3}
   initialScale: 0.1
   maxScale: 0.4
-  scaleSpeed: 0.25
+  scaleSpeed: 0.2
   moveSpeed: 2
   isScenery: 0
   isRightSide: 1

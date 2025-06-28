@@ -57,7 +57,6 @@ public class HazardCoinSpawner : MonoBehaviour
             }
         }
 
-        // 40% chance to spawn a coin in an unoccupied lane
         if (Random.value < 0.4f && coinConfigs != null && coinConfigs.Length > 0)
         {
             int coinLane = GetAvailableLane(-1, occupiedLanes);
@@ -94,6 +93,11 @@ public class HazardCoinSpawner : MonoBehaviour
         if (mover != null)
         {
             mover.SetCustomSpeed(config.moveSpeed, config.scaleSpeed, config.initialScale, config.maxScale);
+
+            // ✅ Ensure scale is correct before activation
+            obj.transform.localScale = Vector3.one * config.initialScale;
+            Debug.Log($"[HazardCoinSpawner] Forced scale reset before enabling: {obj.transform.localScale}");
+
             mover.SetPath(start, end, false);
             mover.InitPooling(poolGroup, config.assetName);
             mover.SetResetScaleOnReturn(endYOffset <= -0.5f);
@@ -103,6 +107,7 @@ public class HazardCoinSpawner : MonoBehaviour
         if (spriteRenderer != null)
             spriteRenderer.sprite = config.sprite;
 
+        // ✅ Now safe to enable after setup
         obj.SetActive(true);
     }
 

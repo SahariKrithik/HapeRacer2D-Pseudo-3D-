@@ -32,19 +32,20 @@ public class MovingObject : MonoBehaviour
         transform.localScale = Vector3.one * initialScale;
         currentScale = initialScale;
         moveProgress = 0f;
-        transform.position = startPos; 
+        transform.position = startPos;
+
+        Debug.Log($"[OnEnable] {gameObject.name} initial scale set to: {transform.localScale}");
     }
 
     void OnDisable()
     {
-        transform.localScale = Vector3.zero; // Optional: fully hide
-        moveProgress = 0f; // Ensure next reuse starts clean
+        Debug.Log($"[OnDisable] {gameObject.name} scale before disabling: {transform.localScale}");
+        transform.localScale = Vector3.zero;
+        moveProgress = 0f;
     }
-
 
     void Update()
     {
-        // Grow scale over time
         if (currentScale < maxScale)
         {
             currentScale += scaleSpeed * Time.deltaTime;
@@ -53,22 +54,14 @@ public class MovingObject : MonoBehaviour
 
         transform.localScale = Vector3.one * currentScale;
 
-        // Movement based on interpolation progress
-        moveProgress += Time.deltaTime * 0.5f; // fixed speed for non-scenery
+        moveProgress += Time.deltaTime * 0.5f;
         transform.position = Vector3.Lerp(startPos, endPos, moveProgress);
 
-        if (moveProgress >= 1f)
+        if (moveProgress >= 1f || transform.position.y < mainCam.transform.position.y - destroyDistance)
         {
             ReturnToPool();
         }
-
-        if (transform.position.y < mainCam.transform.position.y - destroyDistance)
-        {
-            ReturnToPool();
-        }
-
     }
-
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -93,6 +86,8 @@ public class MovingObject : MonoBehaviour
         maxScale = max;
     }
 
+    public float GetInitialScale() => initialScale;
+
     public void InitPooling(ObjectPoolGroup group, string id)
     {
         poolGroup = group;
@@ -114,11 +109,11 @@ public class MovingObject : MonoBehaviour
 
     private void ReturnToPool()
     {
-        // ✅ Conditionally reset scale if flag is true
         if (resetScaleOnReturn)
         {
             currentScale = initialScale;
             transform.localScale = Vector3.one * initialScale;
+            Debug.Log($"[ReturnToPool] {gameObject.name} scale reset to: {transform.localScale}");
         }
 
         if (poolGroup != null && !string.IsNullOrEmpty(poolId))
@@ -126,6 +121,4 @@ public class MovingObject : MonoBehaviour
         else
             gameObject.SetActive(false);
     }
-
-
 }

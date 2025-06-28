@@ -77,9 +77,16 @@ public class ObjectPoolGroup : MonoBehaviour
 
         if (obj != null)
         {
-            // Safe redundant init for safety in case prefab was not warmed up
             PoolEntry.InitObject(obj, this, id);
-            obj.SetActive(true);
+
+            var mover = obj.GetComponent<MovingObject>();
+            if (mover != null)
+            {
+                obj.transform.localScale = Vector3.one * mover.GetInitialScale();
+                Debug.Log($"[PoolGroup Get] {obj.name} scale reset before reuse: {obj.transform.localScale}");
+            }
+
+            // SetActive(true) is removed here — spawner will activate it after setup
         }
 
         return obj;

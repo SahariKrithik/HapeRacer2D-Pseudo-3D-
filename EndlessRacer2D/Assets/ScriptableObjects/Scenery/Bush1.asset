@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Bush1
   m_EditorClassIdentifier: 
   assetName: Bush1
-  sprite: {fileID: 21300000, guid: 06052d13cc9bdcc4ca038cf5b408b6b3, type: 3}
-  initialScale: 0.2
-  maxScale: 0.3
-  scaleSpeed: 0.1
+  sprite: {fileID: 21300000, guid: 9f5f49e6ef0d03147ad717410b9e3c22, type: 3}
+  initialScale: 0.1
+  maxScale: 0.2
+  scaleSpeed: 0.09
   moveSpeed: 1
   isScenery: 1
   isRightSide: 0
