@@ -32,8 +32,15 @@ public class MovingObject : MonoBehaviour
         transform.localScale = Vector3.one * initialScale;
         currentScale = initialScale;
         moveProgress = 0f;
-        transform.position = startPos; // fjgnkjfg
+        transform.position = startPos; 
     }
+
+    void OnDisable()
+    {
+        transform.localScale = Vector3.zero; // Optional: fully hide
+        moveProgress = 0f; // Ensure next reuse starts clean
+    }
+
 
     void Update()
     {

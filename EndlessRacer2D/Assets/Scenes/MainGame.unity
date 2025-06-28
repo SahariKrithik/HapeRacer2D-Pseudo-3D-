@@ -943,13 +943,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6364a407100920f4394e4f7f47d66c4c, type: 2}
   - {fileID: 11400000, guid: 271cd36e878a1624bb13c94509ebd079, type: 2}
   - {fileID: 11400000, guid: 456cabb0ef696684fb808204cc070ef8, type: 2}
-  spawnInterval: 1.5
+  spawnInterval: 2
   spawnYOffset: -2.25
   endYOffset: -2
   endOffsetXLeft: -4
   endOffsetXRight: 4
   enableDoubleHazardInPhase2And3: 1
-  doubleHazardChance: 0.25
+  doubleHazardChance: 0.1
 --- !u!4 &390206843
 Transform:
   m_ObjectHideFlags: 0
@@ -1821,14 +1821,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5a122ca3734c3448ed5b7cd5eb0e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase1Duration: 10
-  phase2Duration: 10
+  phase1Duration: 12
+  phase2Duration: 15
   sceneryPhase1: 0.9
   sceneryPhase2: 0.75
   sceneryPhase3: 0.35
-  hazardPhase1: 1.25
-  hazardPhase2: 1
-  hazardPhase3: 0.935
+  spawnPhase1: 1.5
+  spawnPhase2: 1
+  spawnPhase3: 0.92
+  playerSpeedPhase1: 10
+  playerSpeedPhase2: 12
+  playerSpeedPhase3: 14
   leftScenerySpawner: {fileID: 1571806740}
   rightScenerySpawner: {fileID: 813325789}
   hazardCoinSpawner: {fileID: 390206842}

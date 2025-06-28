@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BananaEnemy1
   m_EditorClassIdentifier: 
   assetName: BananaEnemy1
-  sprite: {fileID: 21300000, guid: f4947fc0b386e6d45b0fbec08dc4c91b, type: 3}
+  sprite: {fileID: 21300000, guid: 63483e9132e4ad04a8cbf36035f8dcd6, type: 3}
   initialScale: 0.2
-  maxScale: 0.65
-  scaleSpeed: 0.25
+  maxScale: 0.75
+  scaleSpeed: 0.3
   moveSpeed: 2
   isScenery: 0
   isRightSide: 1

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class HazardCoinSpawner : MonoBehaviour
 {
@@ -6,20 +7,21 @@ public class HazardCoinSpawner : MonoBehaviour
     public GameAssetConfig[] hazardConfigs;
     public GameAssetConfig[] coinConfigs;
 
-    public float spawnInterval = 2.5f;
+    [Header("Spawn Settings")]
+    public float spawnInterval = 2.0f;
     public float spawnYOffset = -2.25f;
     public float endYOffset = -2.5f;
 
     [Header("End Lane X Offsets")]
-    public float endOffsetXLeft = -1f;    // Applies when laneIndex == 0
-    public float endOffsetXRight = 1f;    // Applies when laneIndex == 2
+    public float endOffsetXLeft = -1f;
+    public float endOffsetXRight = 1f;
 
     [Header("Advanced Spawning")]
     public bool enableDoubleHazardInPhase2And3 = true;
     [Range(0f, 1f)]
     public float doubleHazardChance = 0.3f;
 
-    private float timer;
+    private float timer = 0f;
     private int lastUsedLane = -1;
     private int currentPhase = 1;
 
@@ -28,7 +30,7 @@ public class HazardCoinSpawner : MonoBehaviour
         timer += deltaTime;
         if (timer >= spawnInterval)
         {
-            SpawnHazardOrCoin();
+            SpawnHazardsAndMaybeCoin();
             timer = 0f;
         }
     }
@@ -38,20 +40,31 @@ public class HazardCoinSpawner : MonoBehaviour
         currentPhase = phase;
     }
 
-    void SpawnHazardOrCoin()
+    void SpawnHazardsAndMaybeCoin()
     {
-        bool spawnCoin = Random.value > 0.5f;
-        var configList = spawnCoin ? coinConfigs : hazardConfigs;
-        if (configList == null || configList.Length == 0) return;
-
+        List<int> occupiedLanes = new List<int>();
         int laneIndex = GetAvailableLane(-1);
-        SpawnSingle(configList, laneIndex);
+        SpawnSingle(hazardConfigs, laneIndex);
+        occupiedLanes.Add(laneIndex);
 
-        if (!spawnCoin && enableDoubleHazardInPhase2And3 && currentPhase >= 2 && Random.value < doubleHazardChance)
+        if (enableDoubleHazardInPhase2And3 && currentPhase >= 2 && Random.value < doubleHazardChance)
         {
             int secondLane = GetAvailableLane(laneIndex);
             if (secondLane != laneIndex)
-                SpawnSingle(configList, secondLane);
+            {
+                SpawnSingle(hazardConfigs, secondLane);
+                occupiedLanes.Add(secondLane);
+            }
+        }
+
+        // 40% chance to spawn a coin in an unoccupied lane
+        if (Random.value < 0.4f && coinConfigs != null && coinConfigs.Length > 0)
+        {
+            int coinLane = GetAvailableLane(-1, occupiedLanes);
+            if (coinLane != -1)
+            {
+                SpawnSingle(coinConfigs, coinLane);
+            }
         }
 
         lastUsedLane = laneIndex;
@@ -63,17 +76,13 @@ public class HazardCoinSpawner : MonoBehaviour
         GameObject obj = poolGroup.Get(config.assetName);
         if (obj == null) return;
 
-        // Start position X offset
         float offsetX = laneIndex == 0 ? -0.3f : laneIndex == 2 ? 0.3f : 0f;
         float laneX = LaneManager.Instance.GetLaneX(laneIndex);
 
         float yStart = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1f, 0)).y + spawnYOffset;
-
-        // End position Y with slight jitter
         float jitter = Random.Range(-0.3f, 0.3f);
         float yEnd = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0f, 0)).y + endYOffset + jitter;
 
-        // Apply X offset to end position only
         float endX = laneX;
         if (laneIndex == 0) endX += endOffsetXLeft;
         else if (laneIndex == 2) endX += endOffsetXRight;
@@ -87,8 +96,6 @@ public class HazardCoinSpawner : MonoBehaviour
             mover.SetCustomSpeed(config.moveSpeed, config.scaleSpeed, config.initialScale, config.maxScale);
             mover.SetPath(start, end, false);
             mover.InitPooling(poolGroup, config.assetName);
-
-            // ✅ Set whether to reset scale on return
             mover.SetResetScaleOnReturn(endYOffset <= -0.5f);
         }
 
@@ -99,14 +106,26 @@ public class HazardCoinSpawner : MonoBehaviour
         obj.SetActive(true);
     }
 
-    int GetAvailableLane(int excludeLane)
+    int GetAvailableLane(int excludeLane, List<int> excludeList = null)
     {
         int laneCount = LaneManager.Instance.GetLaneCount();
-        int lane;
-        do
+        List<int> possibleLanes = new List<int>();
+
+        for (int i = 0; i < laneCount; i++)
         {
-            lane = Random.Range(0, laneCount);
-        } while ((lane == lastUsedLane || lane == excludeLane) && laneCount > 1);
-        return lane;
+            if (i == excludeLane) continue;
+            if (excludeList != null && excludeList.Contains(i)) continue;
+            possibleLanes.Add(i);
+        }
+
+        if (possibleLanes.Count == 0)
+            return -1;
+
+        return possibleLanes[Random.Range(0, possibleLanes.Count)];
+    }
+
+    int GetAvailableLane(int excludeLane)
+    {
+        return GetAvailableLane(excludeLane, null);
     }
 }
