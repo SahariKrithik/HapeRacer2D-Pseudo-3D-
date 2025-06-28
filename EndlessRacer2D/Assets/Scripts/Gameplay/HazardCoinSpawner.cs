@@ -87,6 +87,9 @@ public class HazardCoinSpawner : MonoBehaviour
             mover.SetCustomSpeed(config.moveSpeed, config.scaleSpeed, config.initialScale, config.maxScale);
             mover.SetPath(start, end, false);
             mover.InitPooling(poolGroup, config.assetName);
+
+            // ✅ Set whether to reset scale on return
+            mover.SetResetScaleOnReturn(endYOffset <= -0.5f);
         }
 
         var spriteRenderer = obj.GetComponent<SpriteRenderer>();

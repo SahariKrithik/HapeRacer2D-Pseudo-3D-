@@ -10,6 +10,7 @@ public class MovingObject : MonoBehaviour
     private float initialScale;
     private float currentScale;
     private float scaleSpeed;
+    private bool resetScaleOnReturn = false;
 
     private Vector3 startPos;
     private Vector3 endPos;
@@ -99,11 +100,25 @@ public class MovingObject : MonoBehaviour
         transform.position = from;
     }
 
+    public void SetResetScaleOnReturn(bool shouldReset)
+    {
+        resetScaleOnReturn = shouldReset;
+    }
+
     private void ReturnToPool()
     {
+        // ✅ Conditionally reset scale if flag is true
+        if (resetScaleOnReturn)
+        {
+            currentScale = initialScale;
+            transform.localScale = Vector3.one * initialScale;
+        }
+
         if (poolGroup != null && !string.IsNullOrEmpty(poolId))
             poolGroup.Return(poolId, gameObject);
         else
             gameObject.SetActive(false);
     }
+
+
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Spawner : MonoBehaviour
 {
     public ObjectPoolGroup poolGroup;
+    public List<GameAssetConfig> coinConfigs;
     public float spawnInterval = 1.5f;
 
     private float timer;
@@ -58,7 +59,7 @@ public class Spawner : MonoBehaviour
         }
 
         // 40% chance to spawn a coin
-        if (Random.value < 0.4f)
+        if (coinConfigs != null && coinConfigs.Count > 0 && Random.value < 0.4f)
         {
             List<int> coinLanes = new List<int>(laneIndices);
             foreach (int lane in usedLanes)
@@ -71,7 +72,9 @@ public class Spawner : MonoBehaviour
             float x = LaneManager.Instance.GetLaneX(coinLane);
             Vector3 spawnPos = new Vector3(x, topY, 0);
 
-            GameObject coin = poolGroup.Get("Coin");
+            // ✅ Pick a random coin config
+            var config = coinConfigs[Random.Range(0, coinConfigs.Count)];
+            GameObject coin = poolGroup.Get(config.assetName);
             if (coin == null) return;
 
             coin.transform.position = spawnPos;
@@ -79,14 +82,13 @@ public class Spawner : MonoBehaviour
             var mover = coin.GetComponent<MovingObject>();
             if (mover != null)
             {
-                var config = GameSettings.Instance.GetCoinConfig(coin.GetComponent<SpriteRenderer>().sprite);
-                if (config != null)
-                {
-                    mover.SetCustomSpeed(config.moveSpeed, config.scaleSpeed, config.initialScale, config.maxScale);
-                }
-
-                mover.InitPooling(poolGroup, "Coin");
+                mover.SetCustomSpeed(config.moveSpeed, config.scaleSpeed, config.initialScale, config.maxScale);
+                mover.InitPooling(poolGroup, config.assetName);
             }
+
+            var spriteRenderer = coin.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+                spriteRenderer.sprite = config.sprite;
         }
     }
 

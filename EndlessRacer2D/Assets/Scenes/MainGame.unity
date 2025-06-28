@@ -945,7 +945,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 456cabb0ef696684fb808204cc070ef8, type: 2}
   spawnInterval: 1.5
   spawnYOffset: -2.25
-  endYOffset: -2.5
+  endYOffset: -2
   endOffsetXLeft: -4
   endOffsetXRight: 4
   enableDoubleHazardInPhase2And3: 1
@@ -2521,7 +2521,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224359068}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 049fa2a8cde415c4da9f3912a943f998, type: 3}
   m_Name: 
@@ -2531,19 +2531,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6364a407100920f4394e4f7f47d66c4c, type: 2}
   - {fileID: 11400000, guid: 271cd36e878a1624bb13c94509ebd079, type: 2}
   - {fileID: 11400000, guid: 456cabb0ef696684fb808204cc070ef8, type: 2}
-  hazardConfigs:
-  - {fileID: 11400000, guid: 85f50f747efad95458cd66a882f6790e, type: 2}
-  - {fileID: 11400000, guid: 9f8704ff347d6a64fafd7d01a5225582, type: 2}
-  - {fileID: 11400000, guid: a041181c4488b2f47a2785b6e171108d, type: 2}
-  - {fileID: 11400000, guid: f923732388464c447b388ef580b15021, type: 2}
-  - {fileID: 11400000, guid: 4c00986afe93d414a9afae9883234a79, type: 2}
-  - {fileID: 11400000, guid: 9a10cb94b448f5946b8f68e660e5e227, type: 2}
-  - {fileID: 11400000, guid: 0e45dca9fda27c54bacbf58d0da0bbb1, type: 2}
-  - {fileID: 11400000, guid: 69ee2d0389695194d89e9f9f741190c5, type: 2}
-  - {fileID: 11400000, guid: b02c29cd27bdd3d4d94200796fdfb7b1, type: 2}
-  - {fileID: 11400000, guid: 195175d4281b55c42a8ae2c0c9f86148, type: 2}
-  - {fileID: 11400000, guid: 6f37ed6ae9fa89d46b4a17e040ce18ad, type: 2}
-  - {fileID: 11400000, guid: 81b2fd1fd53a09a408c748504b3a6740, type: 2}
   spawnInterval: 2
 --- !u!1 &1280946106
 GameObject:
@@ -2669,21 +2656,21 @@ MonoBehaviour:
   pools:
   - id: Coin1
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 6
+    poolSize: 8
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
   - id: Coin2
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 6
+    poolSize: 8
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
   - id: Coin3
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 6
+    poolSize: 8
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
   - id: Oil1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
@@ -2711,51 +2698,51 @@ MonoBehaviour:
     parent: {fileID: 0}
   - id: Barricade1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 6
+    poolSize: 10
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
   - id: Barricade2
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 6
+    poolSize: 10
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
   - id: BikeEnemy1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 6
+    poolSize: 10
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
   - id: BikeEnemy2
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 6
+    poolSize: 10
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
   - id: BikeEnemy3
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 6
+    poolSize: 10
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
   - id: CarEnemy1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 6
+    poolSize: 10
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
   - id: CarEnemy2
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 6
+    poolSize: 10
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
   - id: CarEnemy3
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 6
+    poolSize: 10
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
 --- !u!1 &1532561345
 GameObject:
