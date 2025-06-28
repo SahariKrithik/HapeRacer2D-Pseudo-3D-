@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98f6bb7d468b9d64facd70e13592eb7a, type: 3}
-  m_Name: TreeAndBush1
+  m_Name: ApeSitting1
   m_EditorClassIdentifier: 
-  assetName: TreeAndBush1
-  sprite: {fileID: 21300000, guid: 7257932883633bf4e9de6ac433ca32f4, type: 3}
-  initialScale: 0.2
-  maxScale: 0.7
-  scaleSpeed: 0.4
+  assetName: ApeSitting1
+  sprite: {fileID: 21300000, guid: 60601a29c75f28e4cae5430bac6cdf48, type: 3}
+  initialScale: 0.1
+  maxScale: 0.35
+  scaleSpeed: 0.1
   moveSpeed: 1
   isScenery: 1
-  isRightSide: 1
+  isRightSide: 0

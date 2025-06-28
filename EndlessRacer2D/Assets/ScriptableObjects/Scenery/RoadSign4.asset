@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98f6bb7d468b9d64facd70e13592eb7a, type: 3}
-  m_Name: TreeAndBush2
+  m_Name: RoadSign4
   m_EditorClassIdentifier: 
-  assetName: TreeAndBush2
-  sprite: {fileID: 21300000, guid: c3fad93a025179240992e435a29bfd13, type: 3}
-  initialScale: 0.2
-  maxScale: 0.7
-  scaleSpeed: 0.4
+  assetName: RoadSign4
+  sprite: {fileID: 21300000, guid: 48d922e835f40ec4b9a331b5ac09fa67, type: 3}
+  initialScale: 0.1
+  maxScale: 0.45
+  scaleSpeed: 0.2
   moveSpeed: 1
   isScenery: 1
   isRightSide: 0

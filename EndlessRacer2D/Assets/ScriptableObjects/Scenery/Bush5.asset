@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98f6bb7d468b9d64facd70e13592eb7a, type: 3}
-  m_Name: Bush1
+  m_Name: Bush5
   m_EditorClassIdentifier: 
-  assetName: Bush1
-  sprite: {fileID: 21300000, guid: 9f5f49e6ef0d03147ad717410b9e3c22, type: 3}
-  initialScale: 0.075
-  maxScale: 0.275
-  scaleSpeed: 0.1
+  assetName: Bush5
+  sprite: {fileID: 21300000, guid: 16f20c5a7caf5b24693b565ba782e2ad, type: 3}
+  initialScale: 0.1
+  maxScale: 0.35
+  scaleSpeed: 0.2
   moveSpeed: 1
   isScenery: 1
   isRightSide: 0

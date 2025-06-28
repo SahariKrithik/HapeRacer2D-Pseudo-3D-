@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98f6bb7d468b9d64facd70e13592eb7a, type: 3}
-  m_Name: HAPEbillboard3
+  m_Name: ApeGroup1
   m_EditorClassIdentifier: 
-  assetName: HAPEbillboard3
-  sprite: {fileID: 21300000, guid: 573ce91b5072aeb438ed08d51fd47b11, type: 3}
-  initialScale: 0.2
+  assetName: ApeGroup1
+  sprite: {fileID: 21300000, guid: a959ebcbc9c47cd449ee735c72acca34, type: 3}
+  initialScale: 0.15
   maxScale: 0.5
-  scaleSpeed: 0.35
+  scaleSpeed: 0.1
   moveSpeed: 1
   isScenery: 1
-  isRightSide: 1
+  isRightSide: 0

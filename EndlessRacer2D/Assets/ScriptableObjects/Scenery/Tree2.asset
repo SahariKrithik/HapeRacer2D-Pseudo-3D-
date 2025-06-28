@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Tree2
   m_EditorClassIdentifier: 
   assetName: Tree2
-  sprite: {fileID: 21300000, guid: ee3df77ff215f3843aa3a342edabbc9d, type: 3}
-  initialScale: 0.2
+  sprite: {fileID: 21300000, guid: d4892cb284d237f4dbb8dc55e74f11e1, type: 3}
+  initialScale: 0.08
   maxScale: 0.4
-  scaleSpeed: 0.2
+  scaleSpeed: 0.225
   moveSpeed: 1
   isScenery: 1
-  isRightSide: 1
+  isRightSide: 0

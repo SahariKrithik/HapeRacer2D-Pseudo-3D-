@@ -29,11 +29,11 @@ public class GameManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
 
         string wallet = PlayerPrefs.GetString("WalletAddress", "0xNoWallet");
-        //BackendManager.Instance.FetchUserHighScore(wallet, (fetchedScore) =>
-        //{
-        //    serverHighScore = fetchedScore;
-        //    Debug.Log("Fetched server high score: " + serverHighScore);
-        //});
+        BackendManager.Instance.FetchUserHighScore(wallet, (fetchedScore) =>
+        {
+            serverHighScore = fetchedScore;
+            Debug.Log("Fetched server high score: " + serverHighScore);
+        });
     }
 
     public void GameOver()

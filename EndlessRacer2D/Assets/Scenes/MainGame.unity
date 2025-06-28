@@ -1513,8 +1513,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolGroup: {fileID: 1481720364}
-  sceneryConfigs: []
-  isRightSideSpawner: 0
+  sceneryConfigs:
+  - {fileID: 11400000, guid: 9c74a48f9a552fd439ad1c8daaf5a77f, type: 2}
+  - {fileID: 11400000, guid: 0428fdce4a8814e41a19183352a20bb2, type: 2}
+  - {fileID: 11400000, guid: 1e3dd622a89497949a607db96f0fddc2, type: 2}
+  - {fileID: 11400000, guid: fa2f5df305e97bb42ae8ecf0221bea29, type: 2}
+  - {fileID: 11400000, guid: 0d8ae8729af00334c9b17a5efa76ef48, type: 2}
+  - {fileID: 11400000, guid: b41f9509b0c64f443b18b0dc887eeae7, type: 2}
+  - {fileID: 11400000, guid: 04d2637224e983445b4dfcb671708fea, type: 2}
+  - {fileID: 11400000, guid: 5fd7a8a2de28b9e419eafd07529914c2, type: 2}
+  - {fileID: 11400000, guid: f5e039723e90c944dad961d669a19266, type: 2}
+  - {fileID: 11400000, guid: 4e8ede6216b85dd4590dc42a0fbb2406, type: 2}
+  - {fileID: 11400000, guid: 4c2f49abe918ab742875e38696c13d89, type: 2}
+  - {fileID: 11400000, guid: 5a8e4f45a3a00e04b9e3a80104e17e2f, type: 2}
+  - {fileID: 11400000, guid: cfb297f60bc311d42b361e9cadf3e41b, type: 2}
+  - {fileID: 11400000, guid: eaab004fc2df7fd4c93d47cd08c6e52d, type: 2}
+  isRightSideSpawner: 1
   spawnInterval: 0.75
   spawnPoint: {fileID: 914629181}
   targetPoint: {fileID: 2033134406}
@@ -1765,18 +1779,34 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 271cd36e878a1624bb13c94509ebd079, type: 2}
   - {fileID: 11400000, guid: 456cabb0ef696684fb808204cc070ef8, type: 2}
   sceneryConfigs:
+  - {fileID: 11400000, guid: 79b0fdcccbe0a4241a482510cc2f7d31, type: 2}
+  - {fileID: 11400000, guid: 4c2f49abe918ab742875e38696c13d89, type: 2}
+  - {fileID: 11400000, guid: c642edf7cb8e37e45bda39632347c3a3, type: 2}
+  - {fileID: 11400000, guid: 5a8e4f45a3a00e04b9e3a80104e17e2f, type: 2}
+  - {fileID: 11400000, guid: b926374539adc1a44bc826e972a42cc5, type: 2}
+  - {fileID: 11400000, guid: 7289791b309b54d45afbafb78a8b9d2a, type: 2}
+  - {fileID: 11400000, guid: 1e3dd622a89497949a607db96f0fddc2, type: 2}
   - {fileID: 11400000, guid: 3fca101c0a761ba45a1f117357f8e93a, type: 2}
-  - {fileID: 11400000, guid: 18bae8e35b56ff04194a554b64fda182, type: 2}
-  - {fileID: 11400000, guid: dad62fa6139a86d42bade8d71d036f26, type: 2}
-  - {fileID: 11400000, guid: bee82a5d6990450408ea3d129828a6a0, type: 2}
-  - {fileID: 11400000, guid: 9ac8a32d165af2f40aaf08e885ad7f77, type: 2}
-  - {fileID: 11400000, guid: 25a554086429a234db2d7acaa68aa2f9, type: 2}
-  - {fileID: 11400000, guid: 4bf1250ba6d75d34f80d6991a35874cb, type: 2}
-  - {fileID: 11400000, guid: 35671060ad8a0bd4a9b3b754d0539bbd, type: 2}
-  - {fileID: 11400000, guid: eff18bee27effa647a1279e7f7b714fb, type: 2}
-  - {fileID: 11400000, guid: df6da4a776281c847be82290d5df687f, type: 2}
-  - {fileID: 11400000, guid: 5b8806def53303945a77f957dd339e96, type: 2}
-  - {fileID: 11400000, guid: 9572eac3a29b8e94f82901351d41c73a, type: 2}
+  - {fileID: 11400000, guid: 9c74a48f9a552fd439ad1c8daaf5a77f, type: 2}
+  - {fileID: 11400000, guid: c309b31f874218a459fa45c4494a7d98, type: 2}
+  - {fileID: 11400000, guid: 0428fdce4a8814e41a19183352a20bb2, type: 2}
+  - {fileID: 11400000, guid: 54b3e185186223d4ebf81559db9c8d1c, type: 2}
+  - {fileID: 11400000, guid: 5fd7a8a2de28b9e419eafd07529914c2, type: 2}
+  - {fileID: 11400000, guid: 9e362055a96d93f4a8b79740e7a90804, type: 2}
+  - {fileID: 11400000, guid: f5e039723e90c944dad961d669a19266, type: 2}
+  - {fileID: 11400000, guid: 7a8cb1ee9fdf2ef438f55123efb1de6a, type: 2}
+  - {fileID: 11400000, guid: 4e8ede6216b85dd4590dc42a0fbb2406, type: 2}
+  - {fileID: 11400000, guid: fa2f5df305e97bb42ae8ecf0221bea29, type: 2}
+  - {fileID: 11400000, guid: 1f9cb6c38556aac43bbc669a0b6d0ab1, type: 2}
+  - {fileID: 11400000, guid: b41f9509b0c64f443b18b0dc887eeae7, type: 2}
+  - {fileID: 11400000, guid: 70e846c5680982944bb87fa531afafdf, type: 2}
+  - {fileID: 11400000, guid: 04d2637224e983445b4dfcb671708fea, type: 2}
+  - {fileID: 11400000, guid: 97d9e05f352988c43993df7e8948ff25, type: 2}
+  - {fileID: 11400000, guid: cfb297f60bc311d42b361e9cadf3e41b, type: 2}
+  - {fileID: 11400000, guid: d2c31c54e0df1e14ea95be7b5e2ba57b, type: 2}
+  - {fileID: 11400000, guid: eaab004fc2df7fd4c93d47cd08c6e52d, type: 2}
+  - {fileID: 11400000, guid: 7190d29566150c9498ec8b3a14e75b71, type: 2}
+  - {fileID: 11400000, guid: 0d8ae8729af00334c9b17a5efa76ef48, type: 2}
 --- !u!114 &888052798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1809,8 +1839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5a122ca3734c3448ed5b7cd5eb0e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase1Duration: 12
-  phase2Duration: 15
+  phase1Duration: 4
+  phase2Duration: 4
   sceneryPhase1: 0.9
   sceneryPhase2: 0.75
   sceneryPhase3: 0.5
@@ -1848,7 +1878,7 @@ Transform:
   m_GameObject: {fileID: 914629179}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.8, y: 3.6907797, z: 0.06756897}
+  m_LocalPosition: {x: -5.8, y: 3.6907797, z: 0.06756897}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2647,98 +2677,260 @@ MonoBehaviour:
   pools:
   - id: Coin1
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 0
-    warmUp: 0
-    expandable: 0
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
     parent: {fileID: 0}
   - id: Coin2
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 0
-    warmUp: 0
-    expandable: 0
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
     parent: {fileID: 0}
   - id: Coin3
     prefab: {fileID: 2498433230526547769, guid: 2f1b38baa821e1d4dacccc74076b9f53, type: 3}
-    poolSize: 0
-    warmUp: 0
-    expandable: 0
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
     parent: {fileID: 0}
   - id: Oil1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
-    warmUp: 0
+    poolSize: 6
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
   - id: Hole1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
-    warmUp: 0
+    poolSize: 6
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
   - id: HazardSign1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
-    warmUp: 0
+    poolSize: 6
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
   - id: BananaEnemy1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
-    warmUp: 0
+    poolSize: 6
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
   - id: Barricade1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
     poolSize: 6
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
   - id: Barricade2
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
     poolSize: 6
     warmUp: 1
-    expandable: 1
+    expandable: 0
     parent: {fileID: 0}
   - id: BikeEnemy1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
-    warmUp: 0
+    poolSize: 6
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
   - id: BikeEnemy2
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
-    warmUp: 0
+    poolSize: 6
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
   - id: BikeEnemy3
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
-    warmUp: 0
+    poolSize: 6
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
   - id: CarEnemy1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
-    warmUp: 0
+    poolSize: 6
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
   - id: CarEnemy2
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
-    warmUp: 0
+    poolSize: 6
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
   - id: CarEnemy3
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
-    warmUp: 0
+    poolSize: 6
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
   - id: Bush1
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 0
-    warmUp: 0
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Bush2
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Bush3
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Bush4
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Bush5
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: ApeSitting1
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: ApeSitting2
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Rock1
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Rock2
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: TreeMonkey1
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: TreeMonkey2
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Tree1
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Tree2
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Tree3
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: RoadSign1
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: RoadSign2
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: RoadSign3
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: RoadSign4
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: RoadSign5
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: ApeGroup1
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Ape1
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Ape2
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Ape3
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: Ape4
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: TreeBush1
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: TreeBush2
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: TreeBush3
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
+    expandable: 0
+    parent: {fileID: 0}
+  - id: TreeBush4
+    prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
+    poolSize: 6
+    warmUp: 1
     expandable: 0
     parent: {fileID: 0}
 --- !u!1 &1532561345
@@ -2924,6 +3116,19 @@ MonoBehaviour:
   poolGroup: {fileID: 1481720364}
   sceneryConfigs:
   - {fileID: 11400000, guid: 3fca101c0a761ba45a1f117357f8e93a, type: 2}
+  - {fileID: 11400000, guid: c309b31f874218a459fa45c4494a7d98, type: 2}
+  - {fileID: 11400000, guid: 54b3e185186223d4ebf81559db9c8d1c, type: 2}
+  - {fileID: 11400000, guid: 7289791b309b54d45afbafb78a8b9d2a, type: 2}
+  - {fileID: 11400000, guid: 1f9cb6c38556aac43bbc669a0b6d0ab1, type: 2}
+  - {fileID: 11400000, guid: 7190d29566150c9498ec8b3a14e75b71, type: 2}
+  - {fileID: 11400000, guid: 70e846c5680982944bb87fa531afafdf, type: 2}
+  - {fileID: 11400000, guid: 9e362055a96d93f4a8b79740e7a90804, type: 2}
+  - {fileID: 11400000, guid: 7a8cb1ee9fdf2ef438f55123efb1de6a, type: 2}
+  - {fileID: 11400000, guid: b926374539adc1a44bc826e972a42cc5, type: 2}
+  - {fileID: 11400000, guid: 79b0fdcccbe0a4241a482510cc2f7d31, type: 2}
+  - {fileID: 11400000, guid: c642edf7cb8e37e45bda39632347c3a3, type: 2}
+  - {fileID: 11400000, guid: 97d9e05f352988c43993df7e8948ff25, type: 2}
+  - {fileID: 11400000, guid: d2c31c54e0df1e14ea95be7b5e2ba57b, type: 2}
   isRightSideSpawner: 0
   spawnInterval: 0.75
   spawnPoint: {fileID: 1658797714}
@@ -3785,7 +3990,7 @@ Transform:
   m_GameObject: {fileID: 2033134404}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.22079802, y: 0.9861325, z: 0.06756897}
+  m_LocalPosition: {x: -0.25, y: 0.9861325, z: 0.06756897}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
