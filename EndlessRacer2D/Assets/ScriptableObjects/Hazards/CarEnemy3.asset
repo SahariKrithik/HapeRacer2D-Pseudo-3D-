@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assetName: CarEnemy3
   sprite: {fileID: 21300000, guid: c3e95b96604df9b4981649033bf1287c, type: 3}
-  initialScale: 0.2
-  maxScale: 0.675
-  scaleSpeed: 0.1
+  initialScale: 0.075
+  maxScale: 0.483
+  scaleSpeed: 0.21
   moveSpeed: 2
   isScenery: 0
   isRightSide: 1

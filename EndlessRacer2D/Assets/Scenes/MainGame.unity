@@ -2689,15 +2689,15 @@ MonoBehaviour:
     parent: {fileID: 0}
   - id: Barricade1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
-    warmUp: 0
-    expandable: 0
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
     parent: {fileID: 0}
   - id: Barricade2
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
-    poolSize: 0
-    warmUp: 0
-    expandable: 0
+    poolSize: 6
+    warmUp: 1
+    expandable: 1
     parent: {fileID: 0}
   - id: BikeEnemy1
     prefab: {fileID: 5149656268890266409, guid: df2af9f6954d0154ea6e212a4fe4e548, type: 3}
@@ -2737,8 +2737,8 @@ MonoBehaviour:
     parent: {fileID: 0}
   - id: Bush1
     prefab: {fileID: 4949950781089216231, guid: 18328ec0a93a08842b75be91fa356533, type: 3}
-    poolSize: 6
-    warmUp: 1
+    poolSize: 0
+    warmUp: 0
     expandable: 0
     parent: {fileID: 0}
 --- !u!1 &1532561345

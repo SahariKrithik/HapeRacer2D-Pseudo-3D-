@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assetName: HazardSign1
   sprite: {fileID: 21300000, guid: 503019a81e89bec4cae308ba7ce31b33, type: 3}
-  initialScale: 0.2
-  maxScale: 0.6
-  scaleSpeed: 0.1
+  initialScale: 0.1
+  maxScale: 0.425
+  scaleSpeed: 0.2
   moveSpeed: 2
   isScenery: 0
   isRightSide: 1

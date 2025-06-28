@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assetName: BikeEnemy3
   sprite: {fileID: 21300000, guid: 482d2908932a7e44c993ad86d9bf4ce9, type: 3}
-  initialScale: 0.2
+  initialScale: 0.125
   maxScale: 0.6
-  scaleSpeed: 0.1
+  scaleSpeed: 0.225
   moveSpeed: 2
   isScenery: 0
   isRightSide: 1
