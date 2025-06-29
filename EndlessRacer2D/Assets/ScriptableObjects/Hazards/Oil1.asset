@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assetName: Oil1
   sprite: {fileID: 21300000, guid: b0f1340439c64524bbd6583d28197699, type: 3}
-  initialScale: 0.1
+  initialScale: 0.08
   maxScale: 0.38
   scaleSpeed: 0.1
   moveSpeed: 2

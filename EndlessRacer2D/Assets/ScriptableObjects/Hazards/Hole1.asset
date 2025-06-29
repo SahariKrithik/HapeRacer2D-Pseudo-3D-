@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assetName: Hole1
   sprite: {fileID: 21300000, guid: e2aed66b26ae1534e831cf1dd2ce71c3, type: 3}
-  initialScale: 0.1
+  initialScale: 0.08
   maxScale: 0.45
   scaleSpeed: 0.2
   moveSpeed: 2
