@@ -15,8 +15,8 @@ MonoBehaviour:
   assetName: Bush2
   sprite: {fileID: 21300000, guid: da6614cdca1162440a2c96ce156aab7e, type: 3}
   initialScale: 0.1
-  maxScale: 0.275
-  scaleSpeed: 0.1
+  maxScale: 0.5
+  scaleSpeed: 0.25
   moveSpeed: 1
   isScenery: 1
   isRightSide: 1

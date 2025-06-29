@@ -15,7 +15,7 @@ MonoBehaviour:
   assetName: TreeBush2
   sprite: {fileID: 21300000, guid: 2f3ffc4c718423040ae5289ccec500ad, type: 3}
   initialScale: 0.09
-  maxScale: 0.4
+  maxScale: 0.35
   scaleSpeed: 0.175
   moveSpeed: 1
   isScenery: 1
