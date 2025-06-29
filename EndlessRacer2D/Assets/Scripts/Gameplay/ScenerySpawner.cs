@@ -38,7 +38,7 @@ public class ScenerySpawner : MonoBehaviour
             mover.SetCustomSpeed(config.moveSpeed, config.scaleSpeed, config.initialScale, config.maxScale);
 
             obj.transform.localScale = Vector3.one * config.initialScale;
-            Debug.Log($"[ScenerySpawner] Forced scale reset before enabling: {obj.transform.localScale}");
+           // Debug.Log($"[ScenerySpawner] Forced scale reset before enabling: {obj.transform.localScale}");
 
             Vector3 adjustedTarget = targetPoint.position;
             adjustedTarget.x += isRightSideSpawner ? 3.5f : -3.5f;

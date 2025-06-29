@@ -96,7 +96,7 @@ public class HazardCoinSpawner : MonoBehaviour
 
             // ✅ Ensure scale is correct before activation
             obj.transform.localScale = Vector3.one * config.initialScale;
-            Debug.Log($"[HazardCoinSpawner] Forced scale reset before enabling: {obj.transform.localScale}");
+            //Debug.Log($"[HazardCoinSpawner] Forced scale reset before enabling: {obj.transform.localScale}");
 
             mover.SetPath(start, end, false);
             mover.InitPooling(poolGroup, config.assetName);

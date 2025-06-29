@@ -34,12 +34,12 @@ public class MovingObject : MonoBehaviour
         moveProgress = 0f;
         transform.position = startPos;
 
-        Debug.Log($"[OnEnable] {gameObject.name} initial scale set to: {transform.localScale}");
+        //Debug.Log($"[OnEnable] {gameObject.name} initial scale set to: {transform.localScale}");
     }
 
     void OnDisable()
     {
-        Debug.Log($"[OnDisable] {gameObject.name} scale before disabling: {transform.localScale}");
+        //Debug.Log($"[OnDisable] {gameObject.name} scale before disabling: {transform.localScale}");
         transform.localScale = Vector3.zero;
         moveProgress = 0f;
     }
@@ -113,7 +113,7 @@ public class MovingObject : MonoBehaviour
         {
             currentScale = initialScale;
             transform.localScale = Vector3.one * initialScale;
-            Debug.Log($"[ReturnToPool] {gameObject.name} scale reset to: {transform.localScale}");
+           // Debug.Log($"[ReturnToPool] {gameObject.name} scale reset to: {transform.localScale}");
         }
 
         if (poolGroup != null && !string.IsNullOrEmpty(poolId))

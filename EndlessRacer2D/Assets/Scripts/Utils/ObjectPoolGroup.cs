@@ -83,7 +83,7 @@ public class ObjectPoolGroup : MonoBehaviour
             if (mover != null)
             {
                 obj.transform.localScale = Vector3.one * mover.GetInitialScale();
-                Debug.Log($"[PoolGroup Get] {obj.name} scale reset before reuse: {obj.transform.localScale}");
+                //Debug.Log($"[PoolGroup Get] {obj.name} scale reset before reuse: {obj.transform.localScale}");
             }
 
             // SetActive(true) is removed here — spawner will activate it after setup

@@ -74,7 +74,7 @@ public class SpawnDifficultyManager : MonoBehaviour
         if (hazardCoinSpawner != null)
             hazardCoinSpawner.SetPhase(phase);
 
-        Debug.Log($"Phase {phase} started");
+       // Debug.Log($"Phase {phase} started");
     }
 
     void SetSceneryInterval(float interval)

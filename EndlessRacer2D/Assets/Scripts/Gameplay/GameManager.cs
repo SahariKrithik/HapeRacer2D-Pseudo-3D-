@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         //BackendManager.Instance.FetchUserHighScore(wallet, (fetchedScore) =>
         //{
         //    serverHighScore = fetchedScore;
-        //    Debug.Log("Fetched server high score: " + serverHighScore);
+      // //    Debug.Log("Fetched server high score: " + serverHighScore);
         //});
     }
 
