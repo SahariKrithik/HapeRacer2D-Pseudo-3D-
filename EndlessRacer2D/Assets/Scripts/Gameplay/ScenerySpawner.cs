@@ -11,6 +11,7 @@ public class ScenerySpawner : MonoBehaviour
     public Transform targetPoint;
 
     private float timer;
+    private GameAssetConfig lastUsedConfig;
 
     public void Tick(float deltaTime)
     {
@@ -24,11 +25,24 @@ public class ScenerySpawner : MonoBehaviour
 
     void SpawnScenery()
     {
-        var validConfigs = System.Array.FindAll(sceneryConfigs,
-            config => config.isScenery && config.isRightSide == isRightSideSpawner);
+        // Filter configs for this side
+        var validConfigs = System.Array.FindAll(
+            sceneryConfigs,
+            config => config.isScenery && config.isRightSide == isRightSideSpawner
+        );
         if (validConfigs.Length == 0) return;
 
-        var config = validConfigs[Random.Range(0, validConfigs.Length)];
+        // Filter out the last used one (if more than 1 option exists)
+        GameAssetConfig[] filtered = validConfigs;
+        if (validConfigs.Length > 1 && lastUsedConfig != null)
+        {
+            filtered = System.Array.FindAll(validConfigs, c => c != lastUsedConfig);
+        }
+
+        // Choose a new config
+        var config = filtered[Random.Range(0, filtered.Length)];
+        lastUsedConfig = config;
+
         GameObject obj = poolGroup.Get(config.assetName);
         if (obj == null) return;
 
@@ -36,9 +50,7 @@ public class ScenerySpawner : MonoBehaviour
         if (mover != null)
         {
             mover.SetCustomSpeed(config.moveSpeed, config.scaleSpeed, config.initialScale, config.maxScale);
-
             obj.transform.localScale = Vector3.one * config.initialScale;
-           // Debug.Log($"[ScenerySpawner] Forced scale reset before enabling: {obj.transform.localScale}");
 
             Vector3 adjustedTarget = targetPoint.position;
             adjustedTarget.x += isRightSideSpawner ? 3.5f : -3.5f;
@@ -51,7 +63,6 @@ public class ScenerySpawner : MonoBehaviour
         if (spriteRenderer != null)
             spriteRenderer.sprite = config.sprite;
 
-        // ✅ Activation now happens after all setup
         obj.SetActive(true);
     }
 }

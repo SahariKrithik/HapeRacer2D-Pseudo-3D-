@@ -6,10 +6,15 @@ public class SpawnDifficultyManager : MonoBehaviour
     public float phase1Duration = 30f;
     public float phase2Duration = 30f;
 
-    [Header("Scenery Spawn Intervals")]
-    public float sceneryPhase1 = 1f;
-    public float sceneryPhase2 = 0.75f;
-    public float sceneryPhase3 = 0.5f;
+    [Header("Scenery Spawn Intervals - Left")]
+    public float leftSceneryPhase1 = 1f;
+    public float leftSceneryPhase2 = 0.75f;
+    public float leftSceneryPhase3 = 0.5f;
+
+    [Header("Scenery Spawn Intervals - Right")]
+    public float rightSceneryPhase1 = 1.5f;
+    public float rightSceneryPhase2 = 1.0f;
+    public float rightSceneryPhase3 = 0.7f;
 
     [Header("Hazard/Coin Shared Spawn Intervals")]
     public float spawnPhase1 = 1.5f;
@@ -55,17 +60,17 @@ public class SpawnDifficultyManager : MonoBehaviour
         switch (phase)
         {
             case 1:
-                SetSceneryInterval(sceneryPhase1);
+                SetSceneryInterval(leftSceneryPhase1, rightSceneryPhase1);
                 SetSpawnInterval(spawnPhase1);
                 SetPlayerSpeed(playerSpeedPhase1);
                 break;
             case 2:
-                SetSceneryInterval(sceneryPhase2);
+                SetSceneryInterval(leftSceneryPhase2, rightSceneryPhase2);
                 SetSpawnInterval(spawnPhase2);
                 SetPlayerSpeed(playerSpeedPhase2);
                 break;
             case 3:
-                SetSceneryInterval(sceneryPhase3);
+                SetSceneryInterval(leftSceneryPhase3, rightSceneryPhase3);
                 SetSpawnInterval(spawnPhase3);
                 SetPlayerSpeed(playerSpeedPhase3);
                 break;
@@ -73,14 +78,12 @@ public class SpawnDifficultyManager : MonoBehaviour
 
         if (hazardCoinSpawner != null)
             hazardCoinSpawner.SetPhase(phase);
-
-       // Debug.Log($"Phase {phase} started");
     }
 
-    void SetSceneryInterval(float interval)
+    void SetSceneryInterval(float leftInterval, float rightInterval)
     {
-        if (leftScenerySpawner != null) leftScenerySpawner.spawnInterval = interval;
-        if (rightScenerySpawner != null) rightScenerySpawner.spawnInterval = interval;
+        if (leftScenerySpawner != null) leftScenerySpawner.spawnInterval = leftInterval;
+        if (rightScenerySpawner != null) rightScenerySpawner.spawnInterval = rightInterval;
     }
 
     void SetSpawnInterval(float interval)

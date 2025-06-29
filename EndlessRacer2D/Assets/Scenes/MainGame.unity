@@ -1940,9 +1940,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phase1Duration: 10
   phase2Duration: 12
-  sceneryPhase1: 1.5
-  sceneryPhase2: 1
-  sceneryPhase3: 0.8
+  leftSceneryPhase1: 1.2
+  leftSceneryPhase2: 0.75
+  leftSceneryPhase3: 0.4
+  rightSceneryPhase1: 2
+  rightSceneryPhase2: 1
+  rightSceneryPhase3: 0.7
   spawnPhase1: 1.5
   spawnPhase2: 1
   spawnPhase3: 0.92
