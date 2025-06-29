@@ -939,7 +939,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 271cd36e878a1624bb13c94509ebd079, type: 2}
   - {fileID: 11400000, guid: 456cabb0ef696684fb808204cc070ef8, type: 2}
   spawnInterval: 2
-  spawnYOffset: -4
+  spawnYOffset: -3.95
   endYOffset: -2
   endOffsetXLeft: -4
   endOffsetXRight: 4
