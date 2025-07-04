@@ -1693,8 +1693,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5a122ca3734c3448ed5b7cd5eb0e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase1Duration: 6
-  phase2Duration: 8
+  phase1Duration: 3
+  phase2Duration: 3
   leftSceneryPhase1: 1.2
   leftSceneryPhase2: 0.75
   leftSceneryPhase3: 0.4
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   spawnPhase3: 0.78
   playerSpeedPhase1: 10
   playerSpeedPhase2: 11
-  playerSpeedPhase3: 12.8
+  playerSpeedPhase3: 12.3
   leftScenerySpawner: {fileID: 1571806740}
   rightScenerySpawner: {fileID: 813325789}
   hazardCoinSpawner: {fileID: 390206842}
