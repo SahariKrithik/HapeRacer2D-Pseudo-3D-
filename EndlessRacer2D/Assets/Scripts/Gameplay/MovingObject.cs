@@ -69,7 +69,7 @@ public class MovingObject : MonoBehaviour
 
         if (CompareTag("Coin"))
         {
-            FindObjectOfType<ScoreManager>()?.AddPoints(50);
+            FindObjectOfType<ScoreManager>()?.AddPoints(40);
         }
         else if (CompareTag("Obstacle"))
         {
