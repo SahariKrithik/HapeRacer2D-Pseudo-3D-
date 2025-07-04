@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
         ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
         int finalScore = scoreManager.GetScore();
 
+        // ✅ Update local PlayerPrefs high score
+        scoreManager.CheckHighScore();
+
         bool isNewHighScore = finalScore > serverHighScore;
 
         if (isNewHighScore)
@@ -53,15 +56,16 @@ public class GameManager : MonoBehaviour
             newHighScoreText.SetActive(true);
         }
 
-        // Submit score to backend
+        // ✅ Submit to backend (already correct)
         string playerName = PlayerPrefs.GetString("PlayerName", "Guest");
-        string wallet = PlayerPrefs.GetString("WalletAddress", "0xNoWallet");
+        string wallet = PlayerPrefs.GetString("WalletAddress", "0xNoWallet").Trim().ToLower();
         BackendManager.Instance.SubmitScore(playerName, wallet, finalScore);
 
-        // Update UI
+        // ✅ Update UI
         finalScoreText.text = "Score: " + finalScore;
         gameOverPanel.SetActive(true);
     }
+
 
     public void ReturnToMainMenu()
     {

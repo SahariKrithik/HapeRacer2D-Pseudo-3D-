@@ -50,7 +50,7 @@ public class StartScreenManager : MonoBehaviour
     public void StartGame()
     {
         string playerName = nameInput.text.Trim();
-        string walletAddress = manualWalletInput.text.Trim();
+        string walletAddress = manualWalletInput.text.Trim().ToLower();
 
         if (string.IsNullOrEmpty(playerName) || string.IsNullOrEmpty(walletAddress))
         {
