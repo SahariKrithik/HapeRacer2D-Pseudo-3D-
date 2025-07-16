@@ -1,4 +1,4 @@
-# EndlessRacer2D# 🚗 
+# EndlessRacer2D 🚗 
 
 **Endless Racer 2D** is a pseudo-3D endless runner game built in **Unity (2022.3.61f1)** targeting **WebGL**. Players race down a three-lane highway, dodging hazards and collecting bananas for bonus points, with integrated leaderboards and Web3 wallet input.
 
