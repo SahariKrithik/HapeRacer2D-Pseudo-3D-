@@ -1,10 +1,10 @@
 # HapeRacer (Pseudo 3D) 🚗 
 
-**Endless Racer 2D** is a pseudo-3D endless runner game built in **Unity (2022.3.61f1)** targeting **WebGL**. Players race down a three-lane highway, dodging hazards and collecting bananas for bonus points, with integrated leaderboards and Web3 wallet input.
+**HapeRacer 2D** is a pseudo-3D endless runner game built in **Unity (2022.3.61f1)** targeting **WebGL**. Players race down a three-lane highway, dodging hazards and collecting bananas for bonus points, with integrated leaderboards and Web3 wallet input.
 
 ### 🎾 Play the Game:
 
-🖐 **[Play Endless Racer 2D (WebGL Build)](https://endless-racer2-d-web-gl.vercel.app/)**
+🖐 **[Play HapeRacer (WebGL Build)](https://endless-racer2-d-web-gl.vercel.app/)**
 
 **Note:**  
 GitHub README links open in the **same tab by default**.  
@@ -19,7 +19,7 @@ If you want to open the link in a **new tab**, use:
 ## 📦 Repository
 
 **GitHub Repo (Source Code):**
-[https://github.com/SahariKrithik/EndlessRacer2D](https://github.com/SahariKrithik/EndlessRacer2D)
+[https://github.com/SahariKrithik/HapeRacer](https://github.com/SahariKrithik/EndlessRacer2D)
 
 *Note: The WebGL build repository is private and not required for local development.*
 
