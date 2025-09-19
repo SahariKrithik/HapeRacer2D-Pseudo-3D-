@@ -68,10 +68,6 @@ If you want to open the link in a **new tab**, use:
 
 1. **Clone the Repo**
 
-```bash
-git clone https://github.com/SahariKrithik/EndlessRacer2D.git
-```
-
 2. **Open in Unity**
 
 * Use **Unity 2022.3.61f1** (Built-in Render Pipeline)
